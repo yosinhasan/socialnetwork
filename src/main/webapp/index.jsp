@@ -1,5 +1,4 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<%@ include file="/WEB-INF/view/jspf/directive/taglib.jspf" %>
+
+
+<c:redirect url="/welcome.html"/>

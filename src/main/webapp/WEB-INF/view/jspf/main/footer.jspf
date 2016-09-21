@@ -1,0 +1,27 @@
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="span4 float2">
+				<form id="newsletter" method="post" >
+					<label>Newsletter</label>
+					<div class="clearfix">
+						<input type="text" onFocus="if(this.value =='Enter e-mail here' ) this.value=''" onBlur="if(this.value=='') this.value='Enter e-mail here'" value="Enter e-mail here" >
+						<a href="#" onClick="document.getElementById('newsletter').submit()" class="btn btn_">subscribe</a>
+					</div>
+				</form>
+			</div>
+			<div class="span8 float">
+				<ul class="footer-menu">
+					<li><a href="#" class="current">Home Page</a>|</li>
+					<li><a href="#">about</a>|</li>
+					<li><a href="#">Services</a>|</li>
+					<li><a href="#">collections</a>|</li>
+					<li><a href="#">styles</a>|</li>
+					<li><a href="#">Contacts</a></li>
+				</ul>
+				Developed by Silver brain&copy;  2016  |  Template from <a rel="nofollow" href="http://www.templatemonster.com/category.php?category=0&type=1" target="_blank">TemplateMonster.com</a>
+			</div>
+		</div>
+	</div>
+</footer>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
