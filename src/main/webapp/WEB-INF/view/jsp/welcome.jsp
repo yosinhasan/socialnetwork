@@ -73,7 +73,7 @@
                 <div class="span8">
                     <div class="clearfix cols-1">
                         <div class="span4 left-0">
-                            <h4 class="indent-2">Welcome</h4>
+                            <h4 class="indent-2">Welcome <spring:message code="welcome"  /> </h4>
                             <p class="lead">Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Phasellus
                                 porta. </p>
                             <figure class="img-indent"><img src="assets/img/page1-img1.jpg" alt="" class="img-radius">

@@ -7,6 +7,8 @@ JSTL tag library.
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <%--===========================================================================
 Custom tag library.
 ===========================================================================
