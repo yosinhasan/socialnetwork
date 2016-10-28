@@ -4,10 +4,24 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url"/>
-        <property name="connection.driver_class"/>
-        <property name="connection.username"/>
-        <property name="connection.password"/>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/kindhope</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping class="com.kindhope.model.BlacklistsModel"/>
+        <mapping resource="com.kindhope.model/BlacklistsModel.hbm.xml"/>
+        <mapping class="com.kindhope.model.ConnectionRequestsModel"/>
+        <mapping resource="com.kindhope.model/ConnectionRequestsModel.hbm.xml"/>
+        <mapping class="com.kindhope.model.ConnectionsModel"/>
+        <mapping resource="com.kindhope.model/ConnectionsModel.hbm.xml"/>
+        <mapping class="com.kindhope.model.GalleriesModel"/>
+        <mapping resource="com.kindhope.model/GalleriesModel.hbm.xml"/>
+        <mapping class="com.kindhope.model.PasswordResetsModel"/>
+        <mapping resource="com.kindhope.model/PasswordResetsModel.hbm.xml"/>
+        <mapping resource="com.kindhope.model/PhotosModel.hbm.xml"/>
+        <mapping class="com.kindhope.model.PhotosModel"/>
+        <mapping class="com.kindhope.model.UsersModel"/>
+        <mapping resource="com.kindhope.model/UsersModel.hbm.xml"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

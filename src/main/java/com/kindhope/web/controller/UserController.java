@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author Yosin_Hasan
+ * User controller.
+ *
+ * @author Yosin_Hasan<yosinhasan@gmail.com>
+ *
  * @version 0.0.1
+ *
  */
 @Controller
 public class UserController {
