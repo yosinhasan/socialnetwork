@@ -1,7 +1,6 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.BlacklistDAO;
-import com.kindhope.dao.GenericDAO;
 import com.kindhope.model.BlacklistsModel;
 
 import java.math.BigInteger;
