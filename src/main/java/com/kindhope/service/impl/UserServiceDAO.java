@@ -1,16 +1,18 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.UserDAO;
-import com.kindhope.model.UsersModel;
+import com.kindhope.entity.UsersEntity;
 import com.kindhope.service.UserService;
+import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
+@Component
 public class UserServiceDAO implements UserService {
     private UserDAO userDAO;
 
@@ -19,32 +21,32 @@ public class UserServiceDAO implements UserService {
     }
 
     @Override
-    public Boolean create(UsersModel object) {
+    public Boolean create(UsersEntity object) {
         return userDAO.create(object);
     }
 
     @Override
-    public UsersModel read(BigInteger id) {
+    public UsersEntity read(BigInteger id) {
         return userDAO.read(id);
     }
 
     @Override
-    public Boolean update(UsersModel object) {
+    public Boolean update(UsersEntity object) {
         return userDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Long id) {
-        return userDAO.delete(id);
+    public Boolean delete(Object object) {
+        return userDAO.delete(object);
     }
 
     @Override
-    public UsersModel read(String field, Object value) {
+    public UsersEntity read(String field, Object value) {
         return userDAO.read(field, value);
     }
 
     @Override
-    public ArrayList<UsersModel> readAll() {
+    public List<UsersEntity> readAll() {
         return userDAO.readAll();
     }
 }

@@ -2,6 +2,7 @@ package com.kindhope.service;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Generic dao.
@@ -38,10 +39,10 @@ public interface GenericService<T> {
     /**
      * Delete object from respective table by id.
      *
-     * @param id object id
+     * @param object object id
      * @return Boolean
      */
-    Boolean delete(Long id);
+    Boolean delete(Object object);
 
     /**
      * Find entity from respective table by field and value.
@@ -55,7 +56,7 @@ public interface GenericService<T> {
     /**
      * Get all objects from table.
      *
-     * @return ArrayList<T>
+     * @return List<T>
      */
-    ArrayList<T> readAll();
+    List<T> readAll();
 }

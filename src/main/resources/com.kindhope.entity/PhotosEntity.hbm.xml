@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.kindhope.entity.PhotosEntity" table="photos" schema="kindhope">
+        <id name="id" column="id"/>
+        <property name="userId" column="user_id"/>
+        <property name="name" column="name"/>
+        <many-to-one name="usersByUserId" class="com.kindhope.entity.UsersEntity" insert="false" update="false">
+            <column name="user_id" not-null="true"/>
+        </many-to-one>
+        <set name="galleryPhotosesById" inverse="true">
+            <key>
+                <column name="photo_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.kindhope.entity.GalleryPhotosEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

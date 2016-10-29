@@ -15,6 +15,7 @@
             </div>
             <div class="span4">
                 <h4 class="indent-2">Latest News:</h4>
+                <h3>${user.name}</h3>
                 <ul class="list-news">
                     <li>
                         <a href="#" class="btn btn_">Apr 21, 2016</a>

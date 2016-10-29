@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.kindhope.entity.ConnectionsEntity" table="connections" schema="kindhope">
+        <composite-id mapped="true" class="com.kindhope.entity.ConnectionsEntityPK">
+            <key-property name="userId" column="user_id"/>
+            <key-property name="friendId" column="friend_id"/>
+        </composite-id>
+        <property name="deletedAt" column="deleted_at"/>
+        <property name="createdAt" column="created_at"/>
+        <property name="updatedAt" column="updated_at"/>
+        <many-to-one name="usersByUserId" class="com.kindhope.entity.UsersEntity" insert="false" update="false">
+            <column name="user_id"/>
+        </many-to-one>
+        <many-to-one name="usersByFriendId" class="com.kindhope.entity.UsersEntity" insert="false" update="false">
+            <column name="friend_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

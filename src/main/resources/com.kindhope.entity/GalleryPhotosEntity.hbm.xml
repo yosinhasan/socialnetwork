@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.kindhope.entity.GalleryPhotosEntity" table="gallery_photos" schema="kindhope">
+        <composite-id mapped="true" class="com.kindhope.entity.GalleryPhotosEntityPK">
+            <key-property name="galleryId" column="gallery_id"/>
+            <key-property name="photoId" column="photo_id"/>
+        </composite-id>
+        <property name="createdAt" column="created_at"/>
+        <property name="updatedAt" column="updated_at"/>
+        <property name="deletedAt" column="deleted_at"/>
+        <many-to-one name="photosByPhotoId" class="com.kindhope.entity.PhotosEntity" insert="false" update="false">
+            <column name="photo_id"/>
+        </many-to-one>
+        <many-to-one name="galleriesByGalleryId" class="com.kindhope.entity.GalleriesEntity" insert="false" update="false">
+            <column name="gallery_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
