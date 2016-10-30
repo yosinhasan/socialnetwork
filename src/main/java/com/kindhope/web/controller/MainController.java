@@ -5,6 +5,7 @@ import com.kindhope.dao.impl.HibernateUserDAO;
 import com.kindhope.entity.UsersEntity;
 import com.kindhope.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +31,11 @@ public class MainController {
     @RequestMapping("/welcome.html")
     public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView view = new ModelAndView("welcome");
-        UsersEntity user = userService.read(BigInteger.ONE);
-        view.addObject("user", user);
+        UsersEntity user = userService.read(BigInteger.valueOf(2L));
+        user.setName("not a name 2");
+        userService.update(user);
+        UsersEntity user2 = userService.read(BigInteger.valueOf(2L));
+        view.addObject("user", user2);
         return view;
     }
 }

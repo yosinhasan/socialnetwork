@@ -8,21 +8,14 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/kindhope</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <mapping class="com.kindhope.entity.BlacklistsEntity"/>
         <mapping class="com.kindhope.entity.ConnectionRequestsEntity"/>
         <mapping class="com.kindhope.entity.ConnectionsEntity"/>
         <mapping class="com.kindhope.entity.GalleriesEntity"/>
-        <mapping class="com.kindhope.entity.PasswordResetsEntity"/>
         <mapping class="com.kindhope.entity.PhotosEntity"/>
         <mapping class="com.kindhope.entity.UsersEntity"/>
         <mapping class="com.kindhope.entity.GalleryPhotosEntity"/>
-        <mapping resource="com.kindhope.entity/BlacklistsEntity.hbm.xml"/>
-        <mapping resource="com.kindhope.entity/ConnectionRequestsEntity.hbm.xml"/>
-        <mapping resource="com.kindhope.entity/ConnectionsEntity.hbm.xml"/>
-        <mapping resource="com.kindhope.entity/GalleriesEntity.hbm.xml"/>
-        <mapping resource="com.kindhope.entity/PhotosEntity.hbm.xml"/>
-        <mapping resource="com.kindhope.entity/UsersEntity.hbm.xml"/>
-        <mapping resource="com.kindhope.entity/GalleryPhotosEntity.hbm.xml"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

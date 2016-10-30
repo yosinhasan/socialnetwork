@@ -13,10 +13,10 @@ import java.util.List;
  * @version 0.0.1
  */
 @Component
-public class UserServiceDAO implements UserService {
+public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
-    public UserServiceDAO(UserDAO userDAO) {
+    public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
@@ -27,7 +27,7 @@ public class UserServiceDAO implements UserService {
 
     @Override
     public UsersEntity read(BigInteger id) {
-        return userDAO.read(id);
+        return userDAO.read(UsersEntity.class, id);
     }
 
     @Override
@@ -38,11 +38,6 @@ public class UserServiceDAO implements UserService {
     @Override
     public Boolean delete(Object object) {
         return userDAO.delete(object);
-    }
-
-    @Override
-    public UsersEntity read(String field, Object value) {
-        return userDAO.read(field, value);
     }
 
     @Override

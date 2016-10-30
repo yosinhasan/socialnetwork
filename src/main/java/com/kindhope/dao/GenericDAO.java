@@ -23,9 +23,10 @@ public interface GenericDAO<T> {
      * Get object from respective table by id.
      *
      * @param id object id
+     * @param tClass T class
      * @return T object
      */
-    T read(BigInteger id);
+    T read(Class<T> tClass, BigInteger id);
 
     /**
      * Update object in respective table.
@@ -42,15 +43,6 @@ public interface GenericDAO<T> {
      * @return Boolean
      */
     Boolean delete(Object object);
-
-    /**
-     * Find entity from respective table by field and value.
-     *
-     * @param field user field
-     * @param value user value
-     * @return T
-     */
-    T read(String field, Object value);
 
     /**
      * Get all objects from table.

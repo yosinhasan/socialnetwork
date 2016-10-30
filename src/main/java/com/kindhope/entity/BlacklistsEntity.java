@@ -72,7 +72,7 @@ public class BlacklistsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public UsersEntity getUsersByUserId() {
         return usersByUserId;
     }
@@ -82,7 +82,7 @@ public class BlacklistsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "blocked_user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "blocked_user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public UsersEntity getUsersByBlockedUserId() {
         return usersByBlockedUserId;
     }

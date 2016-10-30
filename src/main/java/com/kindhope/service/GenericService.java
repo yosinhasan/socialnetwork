@@ -1,7 +1,6 @@
 package com.kindhope.service;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +22,7 @@ public interface GenericService<T> {
     /**
      * Get object from respective table by id.
      *
-     * @param id object id
+     * @param id     object id
      * @return T object
      */
     T read(BigInteger id);
@@ -43,15 +42,6 @@ public interface GenericService<T> {
      * @return Boolean
      */
     Boolean delete(Object object);
-
-    /**
-     * Find entity from respective table by field and value.
-     *
-     * @param field user field
-     * @param value user value
-     * @return T
-     */
-    T read(String field, Object value);
 
     /**
      * Get all objects from table.

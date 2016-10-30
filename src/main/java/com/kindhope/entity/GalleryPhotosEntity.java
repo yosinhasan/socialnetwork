@@ -97,7 +97,7 @@ public class GalleryPhotosEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public PhotosEntity getPhotosByPhotoId() {
         return photosByPhotoId;
     }
@@ -107,7 +107,7 @@ public class GalleryPhotosEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "gallery_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "gallery_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public GalleriesEntity getGalleriesByGalleryId() {
         return galleriesByGalleryId;
     }

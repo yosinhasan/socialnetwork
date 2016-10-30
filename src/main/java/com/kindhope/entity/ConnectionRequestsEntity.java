@@ -97,7 +97,7 @@ public class ConnectionRequestsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public UsersEntity getUsersByUserId() {
         return usersByUserId;
     }
@@ -107,7 +107,7 @@ public class ConnectionRequestsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "request_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "request_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public UsersEntity getUsersByRequestId() {
         return usersByRequestId;
     }
