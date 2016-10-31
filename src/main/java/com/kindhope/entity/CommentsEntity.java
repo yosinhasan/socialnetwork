@@ -9,18 +9,27 @@ import java.sql.Timestamp;
  * @version 0.0.1
  */
 @Entity
-@Table(name = "connections", schema = "kindhope", catalog = "")
-@IdClass(ConnectionsEntityPK.class)
-public class ConnectionsEntity {
+@Table(name = "comments", schema = "kindhope", catalog = "")
+public class CommentsEntity {
+    private BigInteger id;
     private BigInteger userId;
-    private BigInteger friendId;
-    private Timestamp deletedAt;
+    private String comment;
     private Timestamp createdAt;
     private Timestamp updatedAt;
+    private Timestamp deletedAt;
     private UsersEntity usersByUserId;
-    private UsersEntity usersByFriendId;
 
     @Id
+    @Column(name = "id")
+    public BigInteger getId() {
+        return id;
+    }
+
+    public void setId(BigInteger id) {
+        this.id = id;
+    }
+
+    @Basic
     @Column(name = "user_id")
     public BigInteger getUserId() {
         return userId;
@@ -30,24 +39,14 @@ public class ConnectionsEntity {
         this.userId = userId;
     }
 
-    @Id
-    @Column(name = "friend_id")
-    public BigInteger getFriendId() {
-        return friendId;
-    }
-
-    public void setFriendId(BigInteger friendId) {
-        this.friendId = friendId;
-    }
-
     @Basic
-    @Column(name = "deleted_at")
-    public Timestamp getDeletedAt() {
-        return deletedAt;
+    @Column(name = "comment")
+    public String getComment() {
+        return comment;
     }
 
-    public void setDeletedAt(Timestamp deletedAt) {
-        this.deletedAt = deletedAt;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     @Basic
@@ -70,29 +69,41 @@ public class ConnectionsEntity {
         this.updatedAt = updatedAt;
     }
 
+    @Basic
+    @Column(name = "deleted_at")
+    public Timestamp getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Timestamp deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ConnectionsEntity that = (ConnectionsEntity) o;
+        CommentsEntity that = (CommentsEntity) o;
 
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (friendId != null ? !friendId.equals(that.friendId) : that.friendId != null) return false;
-        if (deletedAt != null ? !deletedAt.equals(that.deletedAt) : that.deletedAt != null) return false;
+        if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
         if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
         if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
+        if (deletedAt != null ? !deletedAt.equals(that.deletedAt) : that.deletedAt != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
-        result = 31 * result + (friendId != null ? friendId.hashCode() : 0);
-        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (comment != null ? comment.hashCode() : 0);
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
         return result;
     }
 
@@ -104,15 +115,5 @@ public class ConnectionsEntity {
 
     public void setUsersByUserId(UsersEntity usersByUserId) {
         this.usersByUserId = usersByUserId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "friend_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    public UsersEntity getUsersByFriendId() {
-        return usersByFriendId;
-    }
-
-    public void setUsersByFriendId(UsersEntity usersByFriendId) {
-        this.usersByFriendId = usersByFriendId;
     }
 }

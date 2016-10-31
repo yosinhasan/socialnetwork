@@ -29,6 +29,8 @@ public class UsersEntity {
     private Collection<ConnectionsEntity> connectionsesById_0;
     private Collection<GalleriesEntity> galleriesById;
     private Collection<PhotosEntity> photosesById;
+    private Collection<CommentsEntity> commentsesById;
+    private Collection<GroupMemberEntity> groupMembersById;
 
     @Id
     @Column(name = "id")
@@ -225,5 +227,23 @@ public class UsersEntity {
 
     public void setPhotosesById(Collection<PhotosEntity> photosesById) {
         this.photosesById = photosesById;
+    }
+
+    @OneToMany(mappedBy = "usersByUserId")
+    public Collection<CommentsEntity> getCommentsesById() {
+        return commentsesById;
+    }
+
+    public void setCommentsesById(Collection<CommentsEntity> commentsesById) {
+        this.commentsesById = commentsesById;
+    }
+
+    @OneToMany(mappedBy = "usersByUserId")
+    public Collection<GroupMemberEntity> getGroupMembersById() {
+        return groupMembersById;
+    }
+
+    public void setGroupMembersById(Collection<GroupMemberEntity> groupMembersById) {
+        this.groupMembersById = groupMembersById;
     }
 }

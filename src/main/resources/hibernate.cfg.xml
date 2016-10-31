@@ -16,6 +16,16 @@
         <mapping class="com.kindhope.entity.PhotosEntity"/>
         <mapping class="com.kindhope.entity.UsersEntity"/>
         <mapping class="com.kindhope.entity.GalleryPhotosEntity"/>
+        <mapping class="com.kindhope.entity.CommentPhotoEntity"/>
+        <mapping class="com.kindhope.entity.CommentPostEntity"/>
+        <mapping class="com.kindhope.entity.CommentsEntity"/>
+        <mapping class="com.kindhope.entity.GroupMemberEntity"/>
+        <mapping class="com.kindhope.entity.GroupPostEntity"/>
+        <mapping class="com.kindhope.entity.GroupsEntity"/>
+        <mapping class="com.kindhope.entity.LikePhotoEntity"/>
+        <mapping class="com.kindhope.entity.LikePostEntity"/>
+        <mapping class="com.kindhope.entity.MessagesEntity"/>
+        <mapping class="com.kindhope.entity.PostsEntity"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
