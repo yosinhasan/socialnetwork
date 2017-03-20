@@ -12,40 +12,40 @@ import java.util.List;
  */
 public interface GenericDAO<T> {
     /**
-     * Add specific object to respective table.
+     * Adds specific object to respective table.
      *
      * @param object object
-     * @return Boolean
+     * @return BigInteger
      */
-    Boolean create(T object);
+    BigInteger create(T object);
 
     /**
-     * Get object from respective table by id.
+     * Gets object from respective table by id.
      *
-     * @param id object id
+     * @param id     object id
      * @param tClass T class
      * @return T object
      */
     T read(Class<T> tClass, BigInteger id);
 
     /**
-     * Update object in respective table.
+     * Updates object in respective table.
      *
      * @param object object to update
      * @return Boolean
      */
-    Boolean update(T object);
+    void update(T object);
 
     /**
-     * Delete object from respective table by id.
+     * Deletes object from respective table by id.
      *
      * @param object object to delete
      * @return Boolean
      */
-    Boolean delete(Object object);
+    void delete(Object object);
 
     /**
-     * Get all objects from table.
+     * Gets all objects from table.
      *
      * @return List<T>
      */

@@ -1,8 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.LikePostDAO;
-import com.kindhope.entity.LikePostEntity;
+import com.kindhope.entity.LikePost;
 import com.kindhope.service.LikePostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -11,34 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
+@Service
 public class LikePostServiceImpl implements LikePostService {
+    @Autowired
     private LikePostDAO likePostDAO;
 
-    public LikePostServiceImpl(LikePostDAO likePostDAO) {
-        this.likePostDAO = likePostDAO;
-    }
     @Override
-    public LikePostEntity read(BigInteger id) {
-        return likePostDAO.read(LikePostEntity.class, id);
+    public LikePost read(BigInteger id) {
+        return likePostDAO.read(LikePost.class, id);
     }
 
     @Override
-    public Boolean create(LikePostEntity object) {
+    public BigInteger create(LikePost object) {
         return likePostDAO.create(object);
     }
 
     @Override
-    public Boolean update(LikePostEntity object) {
-        return likePostDAO.update(object);
+    public void update(LikePost object) {
+        likePostDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return likePostDAO.delete(object);
+    public void delete(Object object) {
+        likePostDAO.delete(object);
     }
 
     @Override
-    public List<LikePostEntity> readAll() {
+    public List<LikePost> readAll() {
         return likePostDAO.readAll();
     }
 }

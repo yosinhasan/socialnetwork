@@ -12,6 +12,10 @@
         <springsecurity-version>4.1.3.RELEASE</springsecurity-version>
         <hibernate-version>5.2.2.Final</hibernate-version>
         <mysqlconnector-version>5.1.34</mysqlconnector-version>
+        <junit-version>4.12</junit-version>
+        <mockito-version>1.10.19</mockito-version>
+        <h2-version>1.4.187</h2-version>
+        <dbunit-version>2.2</dbunit-version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -25,6 +29,7 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- ================= SPRING FRAMEWORK  ================= -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -50,21 +55,37 @@
             <artifactId>spring-security-core</artifactId>
             <version>${springsecurity-version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${springsecurity-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity-version}</version>
+        </dependency>
+        <!-- ================= SPRING FRAMEWORK ================= -->
+
+        <!-- ================= HIBERNATE FRAMEWORK ================= -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+
+        <!-- ================= HIBERNATE FRAMEWORK ================= -->
+
+        <!-- ================= JAVAX DEPENDENCIES ================= -->
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -81,21 +102,23 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
+        <!-- ================= JAVAX DEPENDENCIES ================= -->
+
+
+        <!-- ================= LOG4J ==================== -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.5</version>
         </dependency>
+        <!-- ================= LOG4J ==================== -->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -107,6 +130,38 @@
             <version>2.6.2</version>
         </dependency>
 
+
+        <!-- ================= TESTING DEPENDENCIES ================= -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- ================= TESTING DEPENDENCIES ================= -->
     </dependencies>
     <build>
         <finalName>webapp</finalName>

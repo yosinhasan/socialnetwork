@@ -1,9 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.GroupDAO;
-import com.kindhope.entity.GroupsEntity;
+import com.kindhope.entity.Group;
 import com.kindhope.service.GroupService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,35 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class GroupServiceImpl implements GroupService {
+    @Autowired
     private GroupDAO groupDAO;
 
-    public GroupServiceImpl(GroupDAO groupDAO) {
-        this.groupDAO = groupDAO;
-    }
     @Override
-    public GroupsEntity read(BigInteger id) {
-        return groupDAO.read(GroupsEntity.class, id);
+    public Group read(BigInteger id) {
+        return groupDAO.read(Group.class, id);
     }
 
     @Override
-    public Boolean create(GroupsEntity object) {
+    public BigInteger create(Group object) {
         return groupDAO.create(object);
     }
 
     @Override
-    public Boolean update(GroupsEntity object) {
-        return groupDAO.update(object);
+    public void update(Group object) {
+        groupDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return groupDAO.delete(object);
+    public void delete(Object object) {
+        groupDAO.delete(object);
     }
 
     @Override
-    public List<GroupsEntity> readAll() {
+    public List<Group> readAll() {
         return groupDAO.readAll();
     }
 }

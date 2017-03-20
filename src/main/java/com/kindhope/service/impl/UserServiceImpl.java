@@ -1,9 +1,11 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.UserDAO;
-import com.kindhope.entity.UsersEntity;
+import com.kindhope.entity.User;
 import com.kindhope.service.UserService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,36 +14,44 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class UserServiceImpl implements UserService {
+    @Autowired
     private UserDAO userDAO;
+    //    @Autowired
+//    private RoleDAO roleRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    @Override
+    public User read(BigInteger id) {
+        return userDAO.read(User.class, id);
     }
 
     @Override
-    public Boolean create(UsersEntity object) {
+    public BigInteger create(User object) {
+        // need to add default role id
+        object.setPassword(bCryptPasswordEncoder.encode(object.getPassword()));
         return userDAO.create(object);
     }
 
     @Override
-    public UsersEntity read(BigInteger id) {
-        return userDAO.read(UsersEntity.class, id);
+    public void update(User object) {
+        userDAO.update(object);
     }
 
     @Override
-    public Boolean update(UsersEntity object) {
-        return userDAO.update(object);
+    public void delete(Object object) {
+        userDAO.delete(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return userDAO.delete(object);
-    }
-
-    @Override
-    public List<UsersEntity> readAll() {
+    public List<User> readAll() {
         return userDAO.readAll();
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
     }
 }

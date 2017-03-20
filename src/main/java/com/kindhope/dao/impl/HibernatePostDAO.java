@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.PostDAO;
-import com.kindhope.dao.UserDAO;
-import com.kindhope.entity.PostsEntity;
-import com.kindhope.entity.UsersEntity;
-import org.springframework.stereotype.Component;
+import com.kindhope.entity.Post;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -13,13 +11,13 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
-public class HibernatePostDAO extends AbstractHibernateDAO<PostsEntity> implements PostDAO {
+@Repository
+public class HibernatePostDAO extends AbstractHibernateDAO<Post> implements PostDAO {
 
     @Transactional
     @Override
-    public List<PostsEntity> readAll() {
-        return getSession().createQuery("select u from PostsEntity u", PostsEntity.class).getResultList();
+    public List<Post> readAll() {
+        return getSession().createQuery("select u from Post u", Post.class).getResultList();
     }
 
 }

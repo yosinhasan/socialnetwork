@@ -1,8 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.GroupPostDAO;
-import com.kindhope.entity.GroupPostEntity;
+import com.kindhope.entity.GroupPost;
 import com.kindhope.service.GroupPostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -11,35 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
+@Service
 public class GroupPostServiceImpl implements GroupPostService {
+    @Autowired
     private GroupPostDAO groupPostDAO;
 
-    public GroupPostServiceImpl(GroupPostDAO groupPostDAO) {
-        this.groupPostDAO = groupPostDAO;
+    @Override
+    public GroupPost read(BigInteger id) {
+        return groupPostDAO.read(GroupPost.class, id);
     }
 
     @Override
-    public GroupPostEntity read(BigInteger id) {
-        return groupPostDAO.read(GroupPostEntity.class, id);
-    }
-
-    @Override
-    public Boolean create(GroupPostEntity object) {
+    public BigInteger create(GroupPost object) {
         return groupPostDAO.create(object);
     }
 
     @Override
-    public Boolean update(GroupPostEntity object) {
-        return groupPostDAO.update(object);
+    public void update(GroupPost object) {
+        groupPostDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return groupPostDAO.delete(object);
+    public void delete(Object object) {
+        groupPostDAO.delete(object);
     }
 
     @Override
-    public List<GroupPostEntity> readAll() {
+    public List<GroupPost> readAll() {
         return groupPostDAO.readAll();
     }
 }

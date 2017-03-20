@@ -1,11 +1,11 @@
 package com.kindhope.service;
 
-import com.kindhope.entity.ConnectionRequestsEntity;
+import com.kindhope.entity.ConnectionRequest;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-public interface ConnectionRequestService extends GenericService<ConnectionRequestsEntity> {
+public interface ConnectionRequestService extends GenericService<ConnectionRequest> {
 
 }

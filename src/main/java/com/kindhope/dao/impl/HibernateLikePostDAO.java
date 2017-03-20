@@ -1,8 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.LikePostDAO;
-import com.kindhope.entity.LikePostEntity;
-import org.springframework.stereotype.Component;
+import com.kindhope.entity.LikePost;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,13 +11,13 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
-public class HibernateLikePostDAO extends AbstractHibernateDAO<LikePostEntity> implements LikePostDAO {
+@Repository
+public class HibernateLikePostDAO extends AbstractHibernateDAO<LikePost> implements LikePostDAO {
 
     @Transactional
     @Override
-    public List<LikePostEntity> readAll() {
-        return getSession().createQuery("select u from LikePostEntity u", LikePostEntity.class).getResultList();
+    public List<LikePost> readAll() {
+        return getSession().createQuery("select u from LikePost u", LikePost.class).getResultList();
     }
 
 }

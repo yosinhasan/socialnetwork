@@ -1,10 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.BlacklistDAO;
-import com.kindhope.entity.BlacklistsEntity;
+import com.kindhope.entity.Blacklist;
 import com.kindhope.service.BlacklistService;
-import com.kindhope.service.GenericService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -13,36 +13,32 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class BlacklistServiceImpl implements BlacklistService {
+    @Autowired
     private BlacklistDAO blacklistDAO;
 
-    public BlacklistServiceImpl(BlacklistDAO blacklistDAO) {
-        this.blacklistDAO = blacklistDAO;
-    }
-
     @Override
-    public Boolean create(BlacklistsEntity object) {
+    public BigInteger create(Blacklist object) {
         return blacklistDAO.create(object);
     }
 
-    @Override
-    public BlacklistsEntity read(BigInteger id) {
-        return blacklistDAO.read(BlacklistsEntity.class, id);
+    public Blacklist read(BigInteger id) {
+        return blacklistDAO.read(Blacklist.class, id);
     }
 
     @Override
-    public Boolean update(BlacklistsEntity object) {
-        return blacklistDAO.update(object);
+    public void update(Blacklist object) {
+        blacklistDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return blacklistDAO.delete(object);
+    public void delete(Object object) {
+        blacklistDAO.delete(object);
     }
 
     @Override
-    public List<BlacklistsEntity> readAll() {
+    public List<Blacklist> readAll() {
         return blacklistDAO.readAll();
     }
 }

@@ -1,7 +1,7 @@
 package com.kindhope.web.captcha;
 
 
-import com.kindhope.config.Constants;
+import com.kindhope.helper.CaptchaStorage;
 import com.kindhope.web.captcha.impl.CookieCaptchaImpl;
 import com.kindhope.web.captcha.impl.FormCaptchaImpl;
 import com.kindhope.web.captcha.impl.SessionCaptchaImpl;
@@ -10,26 +10,26 @@ import com.kindhope.web.captcha.impl.SessionCaptchaImpl;
  * @author Yosin_Hasan
  */
 public class CaptchaProvider {
-    private String method;
+    private CaptchaStorage captchaStorage;
     private String name;
     private Long time;
 
-    public CaptchaProvider(String method, String name, Long time) {
-        this.method = method;
+    public CaptchaProvider(CaptchaStorage captchaStorage, String name, Long time) {
+        this.captchaStorage = captchaStorage;
         this.name = name;
         this.time = time;
     }
 
     public GenerateCaptcha getCaptchaInstance() {
         GenerateCaptcha instance = null;
-        switch (method) {
-            case Constants.SESSION:
+        switch (captchaStorage) {
+            case SESSION:
                 instance = new SessionCaptchaImpl(name, time);
                 break;
-            case Constants.COOKIE:
+            case COOKIE:
                 instance = new CookieCaptchaImpl(name, time);
                 break;
-            case Constants.FORM:
+            case FORM:
                 instance = new FormCaptchaImpl(name, time);
                 break;
             default:

@@ -12,39 +12,37 @@ import java.util.List;
  */
 public interface GenericService<T> {
     /**
-     * Add specific object to respective table.
+     * Adds specific object to respective table.
      *
      * @param object object
-     * @return Boolean
+     * @return BigInteger
      */
-    Boolean create(T object);
+    BigInteger create(T object);
 
     /**
-     * Get object from respective table by id.
+     * Gets object from respective table by id.
      *
-     * @param id     object id
+     * @param id object id
      * @return T object
      */
     T read(BigInteger id);
 
     /**
-     * Update object in respective table.
+     * Updates object in respective table.
      *
      * @param object object to update
-     * @return Boolean
      */
-    Boolean update(T object);
+    void update(T object);
 
     /**
-     * Delete object from respective table by id.
+     * Deletes object from respective table by id.
      *
      * @param object object id
-     * @return Boolean
      */
-    Boolean delete(Object object);
+    void delete(Object object);
 
     /**
-     * Get all objects from table.
+     * Gets all objects from table.
      *
      * @return List<T>
      */

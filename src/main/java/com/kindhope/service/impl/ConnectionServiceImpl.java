@@ -1,10 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.ConnectionDAO;
-import com.kindhope.entity.ConnectionsEntity;
+import com.kindhope.entity.Connection;
 import com.kindhope.service.ConnectionService;
-import com.kindhope.service.GenericService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -13,36 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class ConnectionServiceImpl implements ConnectionService {
-
+    @Autowired
     private ConnectionDAO connectionDAO;
 
-    public ConnectionServiceImpl(ConnectionDAO connectionDAO) {
-        this.connectionDAO = connectionDAO;
-    }
     @Override
-    public ConnectionsEntity read( BigInteger id) {
-        return connectionDAO.read(ConnectionsEntity.class, id);
+    public Connection read(BigInteger id) {
+        return connectionDAO.read(Connection.class, id);
     }
 
     @Override
-    public Boolean create(ConnectionsEntity object) {
+    public BigInteger create(Connection object) {
         return connectionDAO.create(object);
     }
 
     @Override
-    public Boolean update(ConnectionsEntity object) {
-        return connectionDAO.update(object);
+    public void update(Connection object) {
+        connectionDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return connectionDAO.delete(object);
+    public void delete(Object object) {
+        connectionDAO.delete(object);
     }
 
     @Override
-    public List<ConnectionsEntity> readAll() {
+    public List<Connection> readAll() {
         return connectionDAO.readAll();
     }
 }

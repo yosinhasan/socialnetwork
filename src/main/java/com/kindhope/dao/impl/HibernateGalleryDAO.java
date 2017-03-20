@@ -1,8 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.GalleryDAO;
-import com.kindhope.entity.GalleriesEntity;
-import org.springframework.stereotype.Component;
+import com.kindhope.entity.Gallery;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
-public class HibernateGalleryDAO extends AbstractHibernateDAO<GalleriesEntity> implements GalleryDAO {
+@Repository
+public class HibernateGalleryDAO extends AbstractHibernateDAO<Gallery> implements GalleryDAO {
     @Transactional
     @Override
-    public List<GalleriesEntity> readAll() {
-        return getSession().createQuery("select p from GalleriesEntity p", GalleriesEntity.class).getResultList();
+    public List<Gallery> readAll() {
+        return getSession().createQuery("select p from Gallery p", Gallery.class).getResultList();
     }
 }

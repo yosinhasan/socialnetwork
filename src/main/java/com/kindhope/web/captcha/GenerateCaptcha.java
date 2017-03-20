@@ -13,8 +13,8 @@ public interface GenerateCaptcha {
      *
      * @param captcha captcha
      */
-    public abstract void save(HttpServletRequest request, HttpServletResponse response, ServletContext context,
-                              Integer captcha);
+    void save(HttpServletRequest request, HttpServletResponse response, ServletContext context,
+              Integer captcha);
 
     /**
      * Validate captcha.
@@ -24,6 +24,6 @@ public interface GenerateCaptcha {
      * @param value   value
      * @return boolean
      */
-    public abstract boolean validate(HttpServletRequest request, ServletContext context, Integer value);
+    boolean validate(HttpServletRequest request, ServletContext context, Integer value);
 
 }

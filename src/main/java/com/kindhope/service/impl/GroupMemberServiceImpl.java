@@ -1,9 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.GroupMemberDAO;
-import com.kindhope.entity.GroupMemberEntity;
+import com.kindhope.entity.GroupMember;
 import com.kindhope.service.GroupMemberService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,36 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class GroupMemberServiceImpl implements GroupMemberService {
+    @Autowired
     private GroupMemberDAO groupMemberDAO;
 
-    public GroupMemberServiceImpl(GroupMemberDAO groupMemberDAO) {
-        this.groupMemberDAO = groupMemberDAO;
+    @Override
+    public GroupMember read(BigInteger id) {
+        return groupMemberDAO.read(GroupMember.class, id);
     }
 
     @Override
-    public GroupMemberEntity read(BigInteger id) {
-        return groupMemberDAO.read(GroupMemberEntity.class, id);
-    }
-
-    @Override
-    public Boolean create(GroupMemberEntity object) {
+    public BigInteger create(GroupMember object) {
         return groupMemberDAO.create(object);
     }
 
     @Override
-    public Boolean update(GroupMemberEntity object) {
-        return groupMemberDAO.update(object);
+    public void update(GroupMember object) {
+        groupMemberDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return groupMemberDAO.delete(object);
+    public void delete(Object object) {
+        groupMemberDAO.delete(object);
     }
 
     @Override
-    public List<GroupMemberEntity> readAll() {
+    public List<GroupMember> readAll() {
         return groupMemberDAO.readAll();
     }
 }

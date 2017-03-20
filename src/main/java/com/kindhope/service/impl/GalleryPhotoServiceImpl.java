@@ -1,10 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.GalleryPhotoDAO;
-import com.kindhope.entity.GalleryPhotosEntity;
+import com.kindhope.entity.GalleryPhoto;
 import com.kindhope.service.GalleryPhotoService;
-import com.kindhope.service.GenericService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -13,35 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class GalleryPhotoServiceImpl implements GalleryPhotoService {
+    @Autowired
     private GalleryPhotoDAO galleryPhotoDAO;
 
-    public GalleryPhotoServiceImpl(GalleryPhotoDAO galleryPhotoDAO) {
-        this.galleryPhotoDAO = galleryPhotoDAO;
-    }
     @Override
-    public GalleryPhotosEntity read(BigInteger id) {
-        return galleryPhotoDAO.read(GalleryPhotosEntity.class, id);
+    public GalleryPhoto read(BigInteger id) {
+        return galleryPhotoDAO.read(GalleryPhoto.class, id);
     }
 
     @Override
-    public Boolean create(GalleryPhotosEntity object) {
+    public BigInteger create(GalleryPhoto object) {
         return galleryPhotoDAO.create(object);
     }
 
     @Override
-    public Boolean update(GalleryPhotosEntity object) {
-        return galleryPhotoDAO.update(object);
+    public void update(GalleryPhoto object) {
+        galleryPhotoDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return galleryPhotoDAO.delete(object);
+    public void delete(Object object) {
+        galleryPhotoDAO.delete(object);
     }
 
     @Override
-    public List<GalleryPhotosEntity> readAll() {
+    public List<GalleryPhoto> readAll() {
         return galleryPhotoDAO.readAll();
     }
 }

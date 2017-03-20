@@ -1,11 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.ConnectionRequestDAO;
-import com.kindhope.entity.ConnectionRequestsEntity;
+import com.kindhope.entity.ConnectionRequest;
 import com.kindhope.service.ConnectionRequestService;
-import com.kindhope.service.ConnectionService;
-import com.kindhope.service.GenericService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -14,36 +13,34 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-@Component
+@Service
 public class ConnectionRequestServiceImpl implements ConnectionRequestService {
-
+    @Autowired
     private ConnectionRequestDAO connectionRequestDAO;
 
-    public ConnectionRequestServiceImpl(ConnectionRequestDAO connectionRequestDAO) {
-        this.connectionRequestDAO = connectionRequestDAO;
-    }
+
     @Override
-    public ConnectionRequestsEntity read(BigInteger id) {
-        return connectionRequestDAO.read(ConnectionRequestsEntity.class, id);
+    public ConnectionRequest read(BigInteger id) {
+        return connectionRequestDAO.read(ConnectionRequest.class, id);
     }
 
     @Override
-    public Boolean create(ConnectionRequestsEntity object) {
+    public BigInteger create(ConnectionRequest object) {
         return connectionRequestDAO.create(object);
     }
 
     @Override
-    public Boolean update(ConnectionRequestsEntity object) {
-        return connectionRequestDAO.update(object);
+    public void update(ConnectionRequest object) {
+        connectionRequestDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return connectionRequestDAO.delete(object);
+    public void delete(Object object) {
+        connectionRequestDAO.delete(object);
     }
 
     @Override
-    public List<ConnectionRequestsEntity> readAll() {
+    public List<ConnectionRequest> readAll() {
         return connectionRequestDAO.readAll();
     }
 }

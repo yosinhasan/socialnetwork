@@ -1,8 +1,10 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.CommentPostDAO;
-import com.kindhope.entity.CommentPostEntity;
+import com.kindhope.entity.CommentPost;
 import com.kindhope.service.CommentPostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -11,34 +13,33 @@ import java.util.List;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
+@Service
 public class CommentPostServiceImpl implements CommentPostService {
+    @Autowired
     private CommentPostDAO commentPostDAO;
 
-    public CommentPostServiceImpl(CommentPostDAO commentPostDAO) {
-        this.commentPostDAO = commentPostDAO;
-    }
     @Override
-    public CommentPostEntity read(BigInteger id) {
-        return commentPostDAO.read(CommentPostEntity.class, id);
+    public CommentPost read(BigInteger id) {
+        return commentPostDAO.read(CommentPost.class, id);
     }
 
     @Override
-    public Boolean create(CommentPostEntity object) {
+    public BigInteger create(CommentPost object) {
         return commentPostDAO.create(object);
     }
 
     @Override
-    public Boolean update(CommentPostEntity object) {
-        return commentPostDAO.update(object);
+    public void update(CommentPost object) {
+        commentPostDAO.update(object);
     }
 
     @Override
-    public Boolean delete(Object object) {
-        return commentPostDAO.delete(object);
+    public void delete(Object object) {
+        commentPostDAO.delete(object);
     }
 
     @Override
-    public List<CommentPostEntity> readAll() {
+    public List<CommentPost> readAll() {
         return commentPostDAO.readAll();
     }
 }
