@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-    <user id="1" name="test" email="test@test.com" password="123456" profile_photo_id="1"/>
-    <user id="2" name="test2" email="test2@test.com" password="123456" profile_photo_id="2"/>
-    <user id="3" name="test3" email="test3@test.com" password="123456" profile_photo_id="3"/>
-</dataset>

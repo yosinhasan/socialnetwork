@@ -3,7 +3,7 @@ package com.kindhope.dao.impl;
 import com.kindhope.dao.UserDAO;
 import com.kindhope.entity.User;
 import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +29,11 @@ public class HibernateUserDAOTest extends AbstractDAOImplTest {
     public void setUp() throws Exception {
         super.setUp();
         user = getUser();
-        userDAO.create(user);
     }
 
     @Override
     protected IDataSet getDataSet() throws Exception {
-        IDataSet dataSet = new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml"));
+        IDataSet dataSet = new FlatXmlDataSetBuilder().build(this.getClass().getClassLoader().getResourceAsStream("dataset/User.xml"));
         return dataSet;
     }
 
@@ -50,20 +49,12 @@ public class HibernateUserDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void findByEmail() throws Exception {
-        String email = "email@email.com";
-        User expected = new User();
-        expected.setEmail(email);
-        userDAO.create(expected);
-        User actual = userDAO.findByEmail(email);
-        assertEquals(expected, actual);
+        assertNotNull(userDAO.findByEmail("test@tset.dom"));
     }
 
     @Test
     public void create() throws Exception {
-        User user2 = new User();
-        user2.setEmail("test2@mail.com");
-        user2.setName("test");
-        assertNotNull(userDAO.create(user2));
+        assertNotNull(userDAO.create(user));
     }
 
     @Test
@@ -73,27 +64,26 @@ public class HibernateUserDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void update() throws Exception {
-        String email = "test@test.com";
-        user.setEmail(email);
-        userDAO.update(user);
+        String email = "updated@test.com";
+        User test = userDAO.findByEmail("test@tset.dom");
+        test.setEmail(email);
+        userDAO.update(test);
         assertNotNull(userDAO.findByEmail(email));
     }
 
     @Test
     public void delete() throws Exception {
-        User test = new User();
-        String email = "test@test.fy";
-        test.setEmail(email);
-        userDAO.create(test);
-        assertNotNull(userDAO.findByEmail(email));
+        String email = "test2@tset.dom";
+        User test = userDAO.findByEmail(email);
+        assertNotNull(test);
         userDAO.delete(test);
         assertNull(userDAO.findByEmail(email));
     }
 
     private User getUser() {
         User test = new User();
-        test.setName("Yosin");
-        test.setEmail("yosinhasan@gmail.com");
+        test.setName("Test user");
+        test.setEmail("testuser@gmail.com");
         test.setPassword("123456");
         return test;
     }
