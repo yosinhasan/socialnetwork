@@ -20,15 +20,15 @@ import static org.junit.Assert.*;
 public class HibernateUserDAOTest extends AbstractDAOImplTest {
 
     @Autowired
-    UserDAO userDAO;
+    UserDAO dao;
 
-    User user;
+    User object;
 
     @Override
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        user = getUser();
+        object = getObject();
     }
 
     @Override
@@ -39,50 +39,50 @@ public class HibernateUserDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void readAll() throws Exception {
-        assertNotNull(userDAO.readAll());
+        assertNotNull(dao.readAll());
     }
 
     @Test
     public void findByEmailReturnsNull() throws Exception {
-        assertNull(userDAO.findByEmail("something@gmail.com"));
+        assertNull(dao.findByEmail("something@gmail.com"));
     }
 
     @Test
     public void findByEmail() throws Exception {
-        assertNotNull(userDAO.findByEmail("test@tset.dom"));
+        assertNotNull(dao.findByEmail("test@tset.dom"));
     }
 
     @Test
     public void create() throws Exception {
-        assertNotNull(userDAO.create(user));
+        assertNotNull(dao.create(object));
     }
 
     @Test
     public void read() throws Exception {
-        assertNotNull(userDAO.read(User.class, BigInteger.ONE));
+        assertNotNull(dao.read(User.class, BigInteger.ONE));
     }
 
     @Test
     public void update() throws Exception {
         String email = "updated@test.com";
-        User test = userDAO.findByEmail("test@tset.dom");
+        User test = dao.findByEmail("test@tset.dom");
         test.setEmail(email);
-        userDAO.update(test);
-        assertNotNull(userDAO.findByEmail(email));
+        dao.update(test);
+        assertNotNull(dao.findByEmail(email));
     }
 
     @Test
     public void delete() throws Exception {
         String email = "test2@tset.dom";
-        User test = userDAO.findByEmail(email);
+        User test = dao.findByEmail(email);
         assertNotNull(test);
-        userDAO.delete(test);
-        assertNull(userDAO.findByEmail(email));
+        dao.delete(test);
+        assertNull(dao.findByEmail(email));
     }
 
-    private User getUser() {
+    private User getObject() {
         User test = new User();
-        test.setName("Test user");
+        test.setName("Test object");
         test.setEmail("testuser@gmail.com");
         test.setPassword("123456");
         return test;

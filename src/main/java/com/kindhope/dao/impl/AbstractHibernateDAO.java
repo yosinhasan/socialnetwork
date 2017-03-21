@@ -27,7 +27,7 @@ public abstract class AbstractHibernateDAO<T> implements GenericDAO<T> {
     @Transactional
     @Override
     public T read(Class<T> tClass, BigInteger id) {
-        return getSession().load(tClass, id);
+        return getSession().get(tClass, id);
     }
 
     @Transactional

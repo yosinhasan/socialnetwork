@@ -71,6 +71,11 @@
     <!--================================= FILTERS ==========================================-->
 
     <!--================================= ERRORS ==========================================-->
+
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/WEB-INF/view/jsp/error/index.jsp</location>
+    </error-page>
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/view/jsp/error/404.jsp</location>
