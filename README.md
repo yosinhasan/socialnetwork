@@ -13,5 +13,5 @@ JDK 1.8<br />
 Tomcat 8<br />
 JUnit 4.12<br />
 Mockito 1.10.19<br />
-DBUnit 2.2<br />
+DBUnit 2.5.3<br />
 H2 Database 1.4.187
