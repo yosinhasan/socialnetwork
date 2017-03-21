@@ -15,7 +15,7 @@
         <junit-version>4.12</junit-version>
         <mockito-version>1.10.19</mockito-version>
         <h2-version>1.4.187</h2-version>
-        <dbunit-version>2.2</dbunit-version>
+        <dbunit-version>2.5.3</dbunit-version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -156,7 +156,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>dbunit</groupId>
+            <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
             <version>${dbunit-version}</version>
             <scope>test</scope>
