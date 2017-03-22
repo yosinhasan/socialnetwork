@@ -21,6 +21,7 @@ public class Post {
     private Collection<GroupPost> groupPostsById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public BigInteger getId() {
         return id;

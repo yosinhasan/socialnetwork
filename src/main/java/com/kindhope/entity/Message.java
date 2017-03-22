@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  * @version 0.0.1
  */
 @Entity
-@Table(name = "user", schema = "kindhope", catalog = "")
+@Table(name = "message", schema = "kindhope", catalog = "")
 public class Message {
     private BigInteger id;
     private BigInteger userId;
@@ -20,6 +20,7 @@ public class Message {
     private Timestamp deletedAt;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public BigInteger getId() {
         return id;

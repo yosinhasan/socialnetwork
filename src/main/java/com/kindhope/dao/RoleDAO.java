@@ -7,7 +7,7 @@ import com.kindhope.entity.Role;
  * @version 0.0.1
  */
 public interface RoleDAO extends GenericDAO<Role> {
-    Integer createAndReturnIntId(Role object);
+    Integer save(Role object);
 
     Role read(Integer id);
 

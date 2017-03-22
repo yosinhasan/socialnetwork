@@ -19,6 +19,7 @@ public class Photo {
     private Collection<User> usersById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public BigInteger getId() {
         return id;

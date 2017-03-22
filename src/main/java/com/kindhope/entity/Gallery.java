@@ -18,6 +18,7 @@ public class Gallery {
     private Collection<GalleryPhoto> galleryPhotosById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public BigInteger getId() {
         return id;

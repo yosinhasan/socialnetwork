@@ -15,6 +15,7 @@ public class Role {
     private Collection<UserRole> userRolesById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public Integer getId() {
         return id;

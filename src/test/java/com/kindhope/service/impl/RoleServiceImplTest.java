@@ -65,7 +65,7 @@ public class RoleServiceImplTest {
         Integer expected = 2;
         Role object = new Role();
         object.setId(expected);
-        when(dao.createAndReturnIntId(any(Role.class))).thenReturn(expected);
+        when(dao.save(any(Role.class))).thenReturn(expected);
         assertEquals(expected, service.save(object));
     }
 

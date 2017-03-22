@@ -2,4 +2,11 @@
 <dataset>
     <KINDHOPE.USER ID="1" NAME="TEST" EMAIL="test@tset.dom" PASSWORD="123456"/>
     <KINDHOPE.USER ID="2" NAME="TEST2" EMAIL="test2@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.USERGROUP id="1" user_id="1" title="title1" description="description1" />
+    <KINDHOPE.USERGROUP id="2" user_id="1" title="title2" description="description2" />
+    <KINDHOPE.USERGROUP id="3" user_id="1" title="title3" description="description3" />
+    <KINDHOPE.USERGROUP id="4" user_id="2" title="title4" description="description4" />
+    <KINDHOPE.USERGROUP id="5" user_id="2" title="title5" description="description5" />
+    <KINDHOPE.USERGROUP id="6" user_id="2" title="title6" description="description6" />
+
 </dataset>

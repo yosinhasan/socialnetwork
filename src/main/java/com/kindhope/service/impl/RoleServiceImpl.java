@@ -44,7 +44,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Integer save(Role object) {
-        return roleDAO.createAndReturnIntId(object);
+        return roleDAO.save(object);
     }
 
     @Override

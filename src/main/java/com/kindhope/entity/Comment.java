@@ -20,6 +20,7 @@ public class Comment {
     private User userByUserId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public BigInteger getId() {
         return id;
