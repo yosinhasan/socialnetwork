@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-    <KINDHOPE.USER ID="1" NAME="TEST" EMAIL="test@tset.dom" PASSWORD="123456"/>
-    <KINDHOPE.USER ID="2" NAME="TEST2" EMAIL="test2@tset.dom" PASSWORD="123456"/>
     <KINDHOPE.ROLE ID="1" NAME="ROLE_USER" />
     <KINDHOPE.ROLE ID="2" NAME="ROLE_ADMIN" />
 </dataset>

@@ -6,11 +6,14 @@ import com.kindhope.entity.BlacklistPK;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
+import org.hibernate.SessionFactory;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.sql.Statement;
 
 import static org.junit.Assert.*;
 
@@ -27,12 +30,14 @@ public class BlacklistDAOTest extends AbstractDAOImplTest {
 
     BlacklistPK pk;
 
+
     @Override
     @Before
     public void setUp() throws Exception {
         super.setUp();
         object = getNewInstance(1, 10);
         pk = getNewPKInstance(1, 2);
+
     }
 
     @Override

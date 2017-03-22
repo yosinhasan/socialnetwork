@@ -5,11 +5,13 @@ import com.kindhope.entity.Comment;
 import com.kindhope.entity.Gallery;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.sql.Statement;
 
 import static org.junit.Assert.*;
 
@@ -49,7 +51,7 @@ public class GalleryDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void read() throws Exception {
-        assertNotNull(dao.read(Gallery.class, BigInteger.ONE));
+        assertNotNull(dao.read(Gallery.class, BigInteger.valueOf(6)));
     }
     @Test
     public void readNonExistedItem() throws Exception {
@@ -59,17 +61,17 @@ public class GalleryDAOTest extends AbstractDAOImplTest {
     @Test
     public void update() throws Exception {
         String expected = "updated";
-        Gallery test = dao.read(Gallery.class, BigInteger.valueOf(2));
+        Gallery test = dao.read(Gallery.class, BigInteger.valueOf(8));
         assertNotNull(test);
         test.setName(expected);
         dao.update(test);
-        assertEquals(expected, dao.read(Gallery.class, BigInteger.valueOf(2)).getName());
+        assertEquals(expected, dao.read(Gallery.class, BigInteger.valueOf(8)).getName());
     }
 
     @Test
     public void delete() throws Exception {
         int expected = dao.readAll().size() - 1;
-        Gallery test = dao.read(Gallery.class, BigInteger.valueOf(1));
+        Gallery test = dao.read(Gallery.class, BigInteger.valueOf(8));
         assertNotNull(test);
         dao.delete(test);
         int actual = dao.readAll().size();
@@ -79,7 +81,7 @@ public class GalleryDAOTest extends AbstractDAOImplTest {
     private Gallery getObject() {
         Gallery test = new Gallery();
         test.setName("Test object");
-        test.setUserId(BigInteger.ONE);
+        test.setUserId(BigInteger.valueOf(9));
         return test;
     }
 

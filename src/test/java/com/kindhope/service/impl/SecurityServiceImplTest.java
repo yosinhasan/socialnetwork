@@ -33,7 +33,7 @@ public class SecurityServiceImplTest {
     }
 
     @Test
-    public void autologin(String email, String password) {
+    public void autologin() {
         //to do
     }
 

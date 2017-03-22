@@ -40,15 +40,6 @@ public class UserDetailsServiceImplTest {
         user.setUserRolesById(new ArrayList<>());
     }
 
-    @Test(expected = NullPointerException.class)
-    public void loadUserByUsernameThrowsException() {
-//        when(dao.findByEmail(null)).thenThrow(NullPointerException.class);
-//        service.loadUserByUsername(null);
-//        assertTrue(false);
-
-        // to do
-    }
-
     @Test
     public void loadUserByUsername() {
 //        when(dao.findByEmail(user.getEmail())).thenReturn(user);

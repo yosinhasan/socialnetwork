@@ -49,7 +49,7 @@ public class PhotoDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void read() throws Exception {
-        assertNotNull(dao.read(Photo.class, BigInteger.ONE));
+        assertNotNull(dao.read(Photo.class, BigInteger.valueOf(5)));
     }
     @Test
     public void readNonExistedItem() throws Exception {
@@ -58,17 +58,17 @@ public class PhotoDAOTest extends AbstractDAOImplTest {
     @Test
     public void update() throws Exception {
         String expected = "updated";
-        Photo test = dao.read(Photo.class, BigInteger.valueOf(2));
+        Photo test = dao.read(Photo.class, BigInteger.valueOf(5));
         assertNotNull(test);
         test.setName(expected);
         dao.update(test);
-        assertEquals(expected, dao.read(Photo.class, BigInteger.valueOf(2)).getName());
+        assertEquals(expected, dao.read(Photo.class, BigInteger.valueOf(5)).getName());
     }
 
     @Test
     public void delete() throws Exception {
         int expected = dao.readAll().size() - 1;
-        Photo test = dao.read(Photo.class, BigInteger.valueOf(1));
+        Photo test = dao.read(Photo.class, BigInteger.valueOf(8));
         assertNotNull(test);
         dao.delete(test);
         int actual = dao.readAll().size();

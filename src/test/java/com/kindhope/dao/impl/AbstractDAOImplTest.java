@@ -7,6 +7,7 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.ext.hsqldb.HsqldbDataTypeFactory;
 import org.dbunit.operation.DatabaseOperation;
 import org.hibernate.cfg.Environment;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.sql.DataSource;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -44,6 +46,32 @@ public abstract class AbstractDAOImplTest {
             System.out.println("Table =>>>>>>>>> " + rs.getString(3));
         }
         DatabaseOperation.CLEAN_INSERT.execute(dbConn, getDataSet());
+    }
+    @After
+    public void tearDown() throws Exception {
+        try(Statement statement = dataSource.getConnection().createStatement()) {
+            statement.executeUpdate("DELETE  FROM kindhope.blacklist");
+            statement.executeUpdate("DELETE  FROM kindhope.comment_photo");
+            statement.executeUpdate("DELETE  FROM kindhope.comment_post");
+            statement.executeUpdate("DELETE  FROM kindhope.connection");
+            statement.executeUpdate("DELETE  FROM kindhope.connection_request");
+            statement.executeUpdate("DELETE  FROM kindhope.gallery_photo");
+            statement.executeUpdate("DELETE  FROM kindhope.group_member");
+            statement.executeUpdate("DELETE  FROM kindhope.group_post");
+            statement.executeUpdate("DELETE  FROM kindhope.like_photo");
+            statement.executeUpdate("DELETE  FROM kindhope.like_post");
+            statement.executeUpdate("DELETE  FROM kindhope.user_role");
+            statement.executeUpdate("DELETE  FROM kindhope.comment");
+            statement.executeUpdate("DELETE  FROM kindhope.message");
+            statement.executeUpdate("DELETE  FROM kindhope.photo");
+            statement.executeUpdate("DELETE  FROM kindhope.gallery");
+            statement.executeUpdate("DELETE  FROM kindhope.post");
+            statement.executeUpdate("DELETE  FROM kindhope.role");
+            statement.executeUpdate("DELETE  FROM kindhope.usergroup");
+            statement.executeUpdate("DELETE  FROM kindhope.user");
+        } catch (Throwable e) {
+            System.out.println("Error occured");
+        }
     }
 
     protected abstract IDataSet getDataSet() throws Exception;
