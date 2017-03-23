@@ -20,13 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("user")
 @Controller
 public class UserController {
-    private static final Logger LOG = Logger.getLogger(MainController.class);
-    private UserService userService;
+    private static final Logger LOG = Logger.getLogger(UserController.class);
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
+
 
     @RequestMapping(value = {"index.html"}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {

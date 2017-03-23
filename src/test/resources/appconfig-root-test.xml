@@ -7,6 +7,6 @@
 
     <import resource="classpath:config/dispatcher-servlet-test.xml"/>
 
-    <!--<import resource="classpath:config/spring-security-test.xml"/>-->
+    <import resource="classpath:config/spring-security-test.xml"/>
 
 </beans>

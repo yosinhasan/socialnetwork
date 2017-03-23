@@ -47,15 +47,18 @@ public class UserValidator implements Validator {
         User oldUser = userService.findByEmail(user.getEmail());
         LOG.trace("OLD USER =============>>>" + oldUser);
         if (oldUser != null) {
+            LOG.error("DUPLIATE EMAIL ERROR =============>>>");
             errors.rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.USER_EMAIL_DUBPLICATE_ERROR);
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, Fields.USER_PASSWORD_FIELD, FieldErrors.FIELD_IS_REQUIRED_ERROR);
         if (user.getPassword().length() < Settings.INPUT_USER_PASSWORD_MIN_LENGTH || user.getPassword().length() > Settings.INPUT_USER_PASSWORD_MAX_LENGTH) {
+            LOG.error("PASSWORD LENGTH ERROR =============>>>");
             errors.rejectValue(Fields.USER_PASSWORD_FIELD, FieldErrors.USER_PASSWORD_INVALID_SIZE_ERROR);
         }
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
+            LOG.error("USER PASSWORD  DOESN'T MATCH WITH REPEAT PASSWORD =============>>>");
             errors.rejectValue(Fields.USER_PASSWORD_CONFIRM_FIELD, FieldErrors.USER_PASSWORD_NOT_MATCH_ERROR);
         }
         LOG.debug("VALIDATE USER END");

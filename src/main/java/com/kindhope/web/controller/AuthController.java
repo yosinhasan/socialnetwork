@@ -36,18 +36,22 @@ public class AuthController {
 
     @RequestMapping(value = "/login.fy", method = RequestMethod.GET)
     public ModelAndView login(String error, String logout) {
+        LOG.debug("AUTH LOGIN START");
         ModelAndView view = new ModelAndView("auth/login");
-        if (error != null)
+        if (error != null) {
+            LOG.error("ERROR OCCURED");
             view.addObject("error", "Your username and password is invalid.");
-
-        if (logout != null)
+        }
+        if (logout != null) {
+            LOG.trace("USER LOGGED OUT");
             view.addObject("message", "You have been logged out successfully.");
-
+        }
+        LOG.debug("AUTH LOGIN END");
         return view;
     }
 
     @RequestMapping(value = "/signup.fy", method = RequestMethod.GET)
-    public ModelAndView signup(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView signup() {
         LOG.debug("SIGN UP START");
         ModelAndView view = new ModelAndView("auth/signup");
         view.addObject("userForm", new User());

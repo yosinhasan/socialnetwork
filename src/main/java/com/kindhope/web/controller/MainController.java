@@ -25,16 +25,11 @@ public class MainController {
     private UserService userService;
 
     @RequestMapping("/index.fy")
-    public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView index() {
         LOG.debug("ACTION: INDEX, STATUS: START");
+
         ModelAndView view = new ModelAndView("main/index");
-        User user = userService.read(BigInteger.valueOf(2L));
-        LOG.info("=========================USER INFO BEFORE UPDATE:" + user.getName());
-        user.setName("name 1");
-        userService.update(user);
-        User user2 = userService.read(BigInteger.valueOf(2L));
-        LOG.info("=========================USER INFO AFTER UPDATE:" + user2.getName());
-//        view.addObject("user", user2); ${user.getName()};
+
         LOG.debug("ACTION: INDEX, STATUS: END");
         return view;
     }
