@@ -31,12 +31,12 @@
     </beans:bean>
 
 
-     -->
+
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="user" password="user" authorities="ROLE_USER"/>
+                <user name="user" password="" authorities="ROLE_USER"/>
                 <user name="admin" password="admin" authorities="ROLE_ADMIN, ROLE_USER"/>
             </user-service>
         </authentication-provider>
@@ -53,6 +53,30 @@
                 password-parameter="password"/>
         <logout logout-success-url="/auth/login.fy?logout=true" logout-url="/auth/logout.fy"/>
     </http>
+-->
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="encoder"></password-encoder>
+        </authentication-provider>
+    </authentication-manager>
 
+    <beans:bean id="userDetailsServiceImpl" class="com.kindhope.service.impl.UserDetailsServiceImpl"></beans:bean>
+
+    <beans:bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
+
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/index.fy" access="hasRole('ROLE_USER')"/>
+        <form-login
+                login-page="/auth/login.fy"
+                login-processing-url="/auth/login.fy"
+                default-target-url="/index.fy"
+                authentication-failure-url="/auth/login.fy?error=true"
+                username-parameter="email"
+                password-parameter="password"/>
+        <logout logout-success-url="/auth/login.fy?logout=true" logout-url="/auth/logout.fy"/>
+    </http>
 
 </beans:beans>

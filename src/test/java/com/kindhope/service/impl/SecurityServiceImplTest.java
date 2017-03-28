@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -18,6 +19,9 @@ public class SecurityServiceImplTest {
 
     @Mock
     UserDetailsService userDetailsService;
+
+    @Mock
+    UserDetails userDetails;
 
     @InjectMocks
     SecurityServiceImpl service;

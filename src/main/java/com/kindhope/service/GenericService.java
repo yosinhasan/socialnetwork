@@ -11,6 +11,7 @@ import java.util.List;
  * @version 0.0.1
  */
 public interface GenericService<T> {
+
     /**
      * Adds specific object to respective table.
      *

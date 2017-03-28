@@ -77,7 +77,7 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/logout.fy", method = {RequestMethod.POST})
-    public void logout(HttpServletRequest request, HttpServletResponse response) {
+    public void logout() {
     }
 
 

@@ -36,20 +36,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         User user = userDAO.findByEmail(email);
         LOG.trace("FOUND USER: " + user);
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        LOG.trace("USER'S PERMISSION: " + user.getUserRolesById());
-        grantedAuthorities.add(new SimpleGrantedAuthority(Constants.ROLE_USER));
-        for (UserRole role : user.getUserRolesById()) {
-            LOG.trace("USER PERMISSION: " + role.getRoleByRoleId().getName());
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleByRoleId().getName()));
+        if (user != null) {
+            Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+            LOG.trace("USER'S PERMISSION: " + user.getUserRolesById());
+            grantedAuthorities.add(new SimpleGrantedAuthority(Constants.ROLE_USER));
+            if (user.getUserRolesById() != null) {
+                for (UserRole role : user.getUserRolesById()) {
+                    LOG.trace("USER PERMISSION: " + role.getRoleByRoleId().getName());
+                    grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleByRoleId().getName()));
 
+                }
+            }
+            LOG.debug("LOAD USER BY EMAIL END");
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
         }
-        //java 8
+          //java 8
 //        user.getUserRolesById().stream().forEach(s -> {
 //            LOG.trace("USER PERMISSION: " + s.getRoleByRoleId().getName());
 //            grantedAuthorities.add(new SimpleGrantedAuthority(s.getRoleByRoleId().getName()));
 //        });
-        LOG.debug("LOAD USER BY EMAIL END");
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
+        return null;
     }
 }
