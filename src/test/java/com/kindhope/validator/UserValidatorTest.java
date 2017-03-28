@@ -2,7 +2,6 @@ package com.kindhope.validator;
 
 import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.User;
-import com.kindhope.helper.exception.Error;
 import com.kindhope.helper.form.FieldErrors;
 import com.kindhope.helper.form.Fields;
 import com.kindhope.service.UserService;
@@ -14,7 +13,8 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.springframework.validation.Errors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 /**
@@ -38,7 +38,7 @@ public class UserValidatorTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         object = getObject();
-        doNothing().when(errors).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.FIELD_IS_REQUIRED_ERROR, (Object[])null, (String)null);
+        doNothing().when(errors).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.FIELD_IS_REQUIRED_ERROR, (Object[]) null, (String) null);
         doNothing().when(errors).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.USER_EMAIL_DUBPLICATE_ERROR);
         doNothing().when(errors).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.USER_EMAIL_INCORRECT_FORMAT_ERROR);
         doNothing().when(errors).rejectValue(Fields.USER_PASSWORD_FIELD, FieldErrors.FIELD_IS_REQUIRED_ERROR);
@@ -53,6 +53,7 @@ public class UserValidatorTest {
     public void supports() throws Exception {
         assertTrue(validator.supports(User.class));
     }
+
     @Test
     public void supportsShouldReturnFalse() throws Exception {
         assertFalse(validator.supports(Blacklist.class));
@@ -63,18 +64,21 @@ public class UserValidatorTest {
         validator.validate(object, errors);
         verify(errors, never()).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.USER_EMAIL_INCORRECT_FORMAT_ERROR);
     }
+
     @Test
     public void validateEmailIncorrectFormat() throws Exception {
         object.setEmail("test");
         validator.validate(object, errors);
         verify(errors, atLeastOnce()).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.USER_EMAIL_INCORRECT_FORMAT_ERROR);
     }
+
     @Test
     public void validateEmailExisted() throws Exception {
         when(service.findByEmail(any())).thenReturn(new User());
         validator.validate(object, errors);
         verify(errors, atLeastOnce()).rejectValue(Fields.USER_EMAIL_FIELD, FieldErrors.USER_EMAIL_DUBPLICATE_ERROR);
     }
+
     @Test
     public void validatePasswordIncorrectSize() throws Exception {
         object.setPassword("123");
@@ -82,12 +86,14 @@ public class UserValidatorTest {
         validator.validate(object, errors);
         verify(errors, atLeastOnce()).rejectValue(Fields.USER_PASSWORD_FIELD, FieldErrors.USER_PASSWORD_INVALID_SIZE_ERROR);
     }
+
     @Test
     public void validatePasswordNotMatch() throws Exception {
         object.setPassword("123");
         validator.validate(object, errors);
         verify(errors, atLeastOnce()).rejectValue(Fields.USER_PASSWORD_CONFIRM_FIELD, FieldErrors.USER_PASSWORD_NOT_MATCH_ERROR);
     }
+
     public User getObject() {
         User object = new User();
         object.setName("Test");

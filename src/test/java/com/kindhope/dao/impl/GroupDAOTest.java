@@ -55,6 +55,7 @@ public class GroupDAOTest extends AbstractDAOImplTest {
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(Group.class, BigInteger.valueOf(999)));
     }
+
     @Test
     public void update() throws Exception {
         String expected = "updated";

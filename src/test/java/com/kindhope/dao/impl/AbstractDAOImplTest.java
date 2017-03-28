@@ -39,14 +39,15 @@ public abstract class AbstractDAOImplTest {
         config.setProperty(DatabaseConfig.FEATURE_QUALIFIED_TABLE_NAMES, Boolean.TRUE);
         DatabaseMetaData metaData = this.dataSource.getConnection().getMetaData();
         ResultSet rs = metaData.getTables(null, null, "%", null);
-        while(rs.next()) {
+        while (rs.next()) {
             System.out.println("Table =>>>>>>>>> " + rs.getString(3));
         }
         DatabaseOperation.CLEAN_INSERT.execute(dbConn, getDataSet());
     }
+
     @After
     public void tearDown() throws Exception {
-        try(Statement statement = dataSource.getConnection().createStatement()) {
+        try (Statement statement = dataSource.getConnection().createStatement()) {
             statement.executeUpdate("DELETE  FROM kindhope.blacklist");
             statement.executeUpdate("DELETE  FROM kindhope.comment_photo");
             statement.executeUpdate("DELETE  FROM kindhope.comment_post");

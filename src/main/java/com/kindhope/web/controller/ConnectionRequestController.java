@@ -2,7 +2,6 @@ package com.kindhope.web.controller;
 
 import com.kindhope.entity.ConnectionRequest;
 import com.kindhope.service.ConnectionRequestService;
-import com.kindhope.service.ConnectionService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

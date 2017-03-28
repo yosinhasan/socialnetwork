@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.GalleryPhotoDAO;
-import com.kindhope.dao.GalleryPhotoDAO;
 import com.kindhope.entity.GalleryPhoto;
 import com.kindhope.entity.GalleryPhotoPK;
-import com.kindhope.entity.GalleryPhoto;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;

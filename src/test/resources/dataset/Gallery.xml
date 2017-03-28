@@ -2,8 +2,8 @@
 <dataset>
     <KINDHOPE.USER ID="1" NAME="TEST" EMAIL="test@tset.dom" PASSWORD="123456"/>
     <KINDHOPE.USER ID="2" NAME="TEST2" EMAIL="test2@tset.dom" PASSWORD="123456"/>
-    <KINDHOPE.GALLERY ID="6" NAME="gallery1" USER_ID="1" />
-    <KINDHOPE.GALLERY ID="7" NAME="gallery2" USER_ID="2" />
-    <KINDHOPE.GALLERY ID="8" NAME="gallery3" USER_ID="1" />
+    <KINDHOPE.GALLERY ID="6" NAME="gallery1" USER_ID="1"/>
+    <KINDHOPE.GALLERY ID="7" NAME="gallery2" USER_ID="2"/>
+    <KINDHOPE.GALLERY ID="8" NAME="gallery3" USER_ID="1"/>
 
 </dataset>

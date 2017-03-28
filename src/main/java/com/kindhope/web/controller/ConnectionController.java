@@ -1,8 +1,6 @@
 package com.kindhope.web.controller;
 
-import com.kindhope.entity.Comment;
 import com.kindhope.entity.Connection;
-import com.kindhope.service.BlacklistService;
 import com.kindhope.service.ConnectionService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

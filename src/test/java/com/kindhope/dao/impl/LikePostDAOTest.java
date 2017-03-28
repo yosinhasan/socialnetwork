@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.LikePostDAO;
-import com.kindhope.dao.LikePostDAO;
 import com.kindhope.entity.LikePost;
 import com.kindhope.entity.LikePostPK;
-import com.kindhope.entity.LikePost;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;

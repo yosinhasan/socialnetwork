@@ -1,17 +1,14 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.GalleryDAO;
-import com.kindhope.entity.Comment;
 import com.kindhope.entity.Gallery;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
-import java.sql.Statement;
 
 import static org.junit.Assert.*;
 
@@ -53,6 +50,7 @@ public class GalleryDAOTest extends AbstractDAOImplTest {
     public void read() throws Exception {
         assertNotNull(dao.read(Gallery.class, BigInteger.valueOf(6)));
     }
+
     @Test
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(Gallery.class, BigInteger.valueOf(999)));

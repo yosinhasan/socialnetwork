@@ -56,6 +56,7 @@ public class BlacklistController {
     public String update(@ModelAttribute("form") Blacklist form) {
         return "";
     }
+
     @RequestMapping(value = "/delete/{id}")
     public String destroy(@PathVariable BigInteger id) {
         return "";

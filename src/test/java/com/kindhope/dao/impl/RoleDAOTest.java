@@ -2,7 +2,6 @@ package com.kindhope.dao.impl;
 
 import com.kindhope.dao.RoleDAO;
 import com.kindhope.entity.Role;
-import com.kindhope.entity.Role;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.Before;
@@ -11,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
@@ -22,7 +19,7 @@ import static org.junit.Assert.assertNull;
 public class RoleDAOTest extends AbstractDAOImplTest {
     @Autowired
     RoleDAO dao;
-    
+
     Role object;
 
     @Override
@@ -57,6 +54,7 @@ public class RoleDAOTest extends AbstractDAOImplTest {
     public void readIntId() throws Exception {
         assertNotNull(dao.read(1));
     }
+
     @Test
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(999));

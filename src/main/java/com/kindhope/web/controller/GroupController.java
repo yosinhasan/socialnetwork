@@ -1,6 +1,5 @@
 package com.kindhope.web.controller;
 
-import com.kindhope.service.ConnectionRequestService;
 import com.kindhope.service.GroupService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +57,7 @@ public class GroupController {
     public String update(@ModelAttribute("form") Group form) {
         return "";
     }
+
     @RequestMapping(value = "/delete/{id}")
     public String destroy(@PathVariable BigInteger id) {
         return "";

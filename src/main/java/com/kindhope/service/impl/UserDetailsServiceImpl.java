@@ -50,7 +50,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             LOG.debug("LOAD USER BY EMAIL END");
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
         }
-          //java 8
+        //java 8
 //        user.getUserRolesById().stream().forEach(s -> {
 //            LOG.trace("USER PERMISSION: " + s.getRoleByRoleId().getName());
 //            grantedAuthorities.add(new SimpleGrantedAuthority(s.getRoleByRoleId().getName()));

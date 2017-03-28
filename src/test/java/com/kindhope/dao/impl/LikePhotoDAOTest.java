@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.LikePhotoDAO;
-import com.kindhope.dao.LikePhotoDAO;
 import com.kindhope.entity.LikePhoto;
 import com.kindhope.entity.LikePhotoPK;
-import com.kindhope.entity.LikePhoto;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;

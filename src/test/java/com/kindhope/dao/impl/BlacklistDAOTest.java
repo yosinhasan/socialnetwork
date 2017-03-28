@@ -80,6 +80,7 @@ public class BlacklistDAOTest extends AbstractDAOImplTest {
         test.setBlockedUserId(BigInteger.TEN);
         dao.update(test);
     }
+
     @Test
     public void delete() throws Exception {
         Blacklist test = dao.read(Blacklist.class, pk);
@@ -98,11 +99,12 @@ public class BlacklistDAOTest extends AbstractDAOImplTest {
     @Test
     public void deleteNonExistedItem() throws Exception {
         Blacklist test = getNewInstance(1, 111);
-        int expected =  dao.readAll().size();
+        int expected = dao.readAll().size();
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
     }
+
     private Blacklist getNewInstance(long id1, long id2) {
         Blacklist test = new Blacklist();
         test.setUserId(BigInteger.valueOf(id1));

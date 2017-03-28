@@ -1,7 +1,6 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.UserDAO;
-import com.kindhope.entity.Comment;
 import com.kindhope.entity.User;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
@@ -11,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
@@ -62,10 +62,12 @@ public class UserDAOTest extends AbstractDAOImplTest {
     public void read() throws Exception {
         assertNotNull(dao.read(User.class, BigInteger.ONE));
     }
+
     @Test
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(User.class, BigInteger.valueOf(999)));
     }
+
     @Test
     public void update() throws Exception {
         String email = "updated@test.com";

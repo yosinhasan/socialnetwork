@@ -2,11 +2,11 @@
 <dataset>
     <KINDHOPE.USER ID="1" NAME="TEST" EMAIL="test@tset.dom" PASSWORD="123456"/>
     <KINDHOPE.USER ID="2" NAME="TEST2" EMAIL="test2@tset.dom" PASSWORD="123456"/>
-    <KINDHOPE.USERGROUP ID="1" USER_ID="1" TITLE="title1" DESCRIPTION="description1" />
-    <KINDHOPE.USERGROUP ID="2" USER_ID="1" TITLE="title2" DESCRIPTION="description2" />
-    <KINDHOPE.USERGROUP ID="3" USER_ID="1" TITLE="title3" DESCRIPTION="description3" />
-    <KINDHOPE.USERGROUP ID="4" USER_ID="2" TITLE="title4" DESCRIPTION="description4" />
-    <KINDHOPE.USERGROUP ID="5" USER_ID="2" TITLE="title5" DESCRIPTION="description5" />
-    <KINDHOPE.USERGROUP ID="6" USER_ID="2" TITLE="title6" DESCRIPTION="description6" />
+    <KINDHOPE.USERGROUP ID="1" USER_ID="1" TITLE="title1" DESCRIPTION="description1"/>
+    <KINDHOPE.USERGROUP ID="2" USER_ID="1" TITLE="title2" DESCRIPTION="description2"/>
+    <KINDHOPE.USERGROUP ID="3" USER_ID="1" TITLE="title3" DESCRIPTION="description3"/>
+    <KINDHOPE.USERGROUP ID="4" USER_ID="2" TITLE="title4" DESCRIPTION="description4"/>
+    <KINDHOPE.USERGROUP ID="5" USER_ID="2" TITLE="title5" DESCRIPTION="description5"/>
+    <KINDHOPE.USERGROUP ID="6" USER_ID="2" TITLE="title6" DESCRIPTION="description6"/>
 
 </dataset>

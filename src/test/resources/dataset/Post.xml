@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-    <KINDHOPE.POST ID="1" POST="post" USER_ID="1" />
-    <KINDHOPE.POST ID="2" POST="post" USER_ID="1" />
-    <KINDHOPE.POST ID="3" POST="post" USER_ID="2" />
-    <KINDHOPE.POST ID="4" POST="post" USER_ID="2" />
+    <KINDHOPE.POST ID="1" POST="post" USER_ID="1"/>
+    <KINDHOPE.POST ID="2" POST="post" USER_ID="1"/>
+    <KINDHOPE.POST ID="3" POST="post" USER_ID="2"/>
+    <KINDHOPE.POST ID="4" POST="post" USER_ID="2"/>
 </dataset>

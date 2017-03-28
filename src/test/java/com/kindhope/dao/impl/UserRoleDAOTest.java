@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.UserRoleDAO;
-import com.kindhope.dao.UserRoleDAO;
 import com.kindhope.entity.UserRole;
 import com.kindhope.entity.UserRolePK;
-import com.kindhope.entity.UserRole;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;

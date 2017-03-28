@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.ConnectionDAO;
-import com.kindhope.dao.ConnectionDAO;
 import com.kindhope.entity.Connection;
 import com.kindhope.entity.ConnectionPK;
-import com.kindhope.entity.Connection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;

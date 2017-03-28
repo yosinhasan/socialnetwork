@@ -3,7 +3,6 @@ package com.kindhope.dao.impl;
 import com.kindhope.dao.CommentPhotoDAO;
 import com.kindhope.entity.CommentPhoto;
 import com.kindhope.entity.CommentPhotoPK;
-import com.kindhope.entity.CommentPhoto;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
@@ -25,9 +24,9 @@ public class CommentPhotoDAOTest extends AbstractDAOImplTest {
     CommentPhotoDAO dao;
 
     CommentPhoto object;
-    
+
     CommentPhotoPK pk;
-    
+
     @Override
     @Before
     public void setUp() throws Exception {
@@ -79,6 +78,7 @@ public class CommentPhotoDAOTest extends AbstractDAOImplTest {
         test.setPhotoId(BigInteger.TEN);
         dao.update(test);
     }
+
     @Test
     public void delete() throws Exception {
         CommentPhoto test = dao.read(CommentPhoto.class, pk);
@@ -97,11 +97,12 @@ public class CommentPhotoDAOTest extends AbstractDAOImplTest {
     @Test
     public void deleteNonExistedItem() throws Exception {
         CommentPhoto test = getNewInstance(1, 111);
-        int expected =  dao.readAll().size();
+        int expected = dao.readAll().size();
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
     }
+
     private CommentPhoto getNewInstance(long id1, long id2) {
         CommentPhoto test = new CommentPhoto();
         test.setCommentId(BigInteger.valueOf(id1));

@@ -1,10 +1,8 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.CommentPostDAO;
-import com.kindhope.dao.CommentPostDAO;
 import com.kindhope.entity.CommentPost;
 import com.kindhope.entity.CommentPostPK;
-import com.kindhope.entity.CommentPost;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;

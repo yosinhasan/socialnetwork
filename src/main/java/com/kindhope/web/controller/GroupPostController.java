@@ -1,8 +1,6 @@
 package com.kindhope.web.controller;
 
-import com.kindhope.entity.Comment;
 import com.kindhope.entity.GroupPost;
-import com.kindhope.service.ConnectionRequestService;
 import com.kindhope.service.GroupPostService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

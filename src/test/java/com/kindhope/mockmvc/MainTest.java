@@ -35,6 +35,7 @@ public class MainTest extends AbstractTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("http://localhost/auth/login.fy"));
     }
+
     @WithMockUser
     @Test
     public void index() throws Exception {

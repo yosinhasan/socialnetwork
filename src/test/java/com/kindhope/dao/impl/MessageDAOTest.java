@@ -50,10 +50,12 @@ public class MessageDAOTest extends AbstractDAOImplTest {
     public void read() throws Exception {
         assertNotNull(dao.read(Message.class, BigInteger.ONE));
     }
+
     @Test
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(Message.class, BigInteger.valueOf(999)));
     }
+
     @Test
     public void update() throws Exception {
         String expected = "updated";

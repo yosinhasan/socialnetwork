@@ -1,7 +1,6 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.PostDAO;
-import com.kindhope.entity.Photo;
 import com.kindhope.entity.Post;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
@@ -51,10 +50,12 @@ public class PostDAOTest extends AbstractDAOImplTest {
     public void read() throws Exception {
         assertNotNull(dao.read(Post.class, BigInteger.ONE));
     }
+
     @Test
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(Post.class, BigInteger.valueOf(999)));
     }
+
     @Test
     public void update() throws Exception {
         String expected = "updated";

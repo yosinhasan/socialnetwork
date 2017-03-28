@@ -1,9 +1,6 @@
 package com.kindhope.web.controller;
 
-import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.Comment;
-import com.kindhope.entity.CommentPhoto;
-import com.kindhope.service.BlacklistService;
 import com.kindhope.service.CommentPhotoService;
 import com.kindhope.service.CommentService;
 import org.apache.log4j.Logger;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigInteger;
-import java.security.acl.Group;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>.

@@ -6,7 +6,10 @@ import com.kindhope.service.UserService;
 import com.kindhope.validator.UserValidator;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
@@ -82,6 +85,7 @@ public class AuthControllerTest {
         verify(securityService, atLeastOnce()).autologin(object.getEmail(), object.getPassword());
         assertEquals("redirect:/index.fy", actual);
     }
+
     @Test
     public void registerNewUserHasError() throws Exception {
         boolean hasError = true;

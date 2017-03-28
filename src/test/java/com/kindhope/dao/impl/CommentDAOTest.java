@@ -1,11 +1,9 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.CommentDAO;
-import com.kindhope.dao.CommentDAO;
 import com.kindhope.entity.Comment;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.hibernate.ObjectNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class CommentDAOTest extends AbstractDAOImplTest {
 
     @Autowired
     CommentDAO dao;
-    
+
 
     Comment object;
 
@@ -53,6 +51,7 @@ public class CommentDAOTest extends AbstractDAOImplTest {
     public void read() throws Exception {
         assertNotNull(dao.read(Comment.class, BigInteger.ONE));
     }
+
     @Test
     public void readNonExistedItem() throws Exception {
         assertNull(dao.read(Comment.class, BigInteger.valueOf(999)));
