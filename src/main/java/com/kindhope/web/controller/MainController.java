@@ -1,9 +1,14 @@
 package com.kindhope.web.controller;
 
+import com.kindhope.entity.User;
+import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.math.BigInteger;
 
 /**
  * Main controller.
@@ -15,14 +20,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
     private static final Logger LOG = Logger.getLogger(MainController.class);
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/index.fy")
     public ModelAndView index() {
         LOG.debug("ACTION: INDEX, STATUS: START");
         ModelAndView view = new ModelAndView("main/index");
-
+        User user = userService.read(BigInteger.ONE);
+        LOG.trace("FOUND USER: " + user.getEmail());
         LOG.debug("ACTION: INDEX, STATUS: END");
         return view;
     }

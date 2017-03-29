@@ -1,7 +1,9 @@
 package com.kindhope.web.controller;
 
 import com.kindhope.entity.Blacklist;
+import com.kindhope.entity.User;
 import com.kindhope.service.BlacklistService;
+import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigInteger;
+import java.util.List;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>.
@@ -23,11 +26,15 @@ public class BlacklistController {
 
     @Autowired
     private BlacklistService blacklistService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
-        view.setViewName("");
+        view.setViewName("blacklist/index");
+        BigInteger userId = BigInteger.ONE;
+        Iterable<User> s = userService.findBlacklistUsersByUserId(userId);
 
         return view;
     }

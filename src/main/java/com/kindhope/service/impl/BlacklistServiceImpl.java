@@ -41,4 +41,5 @@ public class BlacklistServiceImpl implements BlacklistService {
     public List<Blacklist> readAll() {
         return blacklistDAO.readAll();
     }
+
 }

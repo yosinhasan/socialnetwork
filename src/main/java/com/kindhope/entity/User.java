@@ -194,7 +194,7 @@ public class User {
         this.groupMembersById = groupMembersById;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY)
     public Collection<Blacklist> getBlacklistsById() {
         return blacklistsById;
     }
