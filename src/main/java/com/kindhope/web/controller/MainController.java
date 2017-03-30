@@ -1,5 +1,6 @@
 package com.kindhope.web.controller;
 
+import com.kindhope.dao.UserDAO;
 import com.kindhope.entity.User;
 import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
@@ -22,13 +23,16 @@ public class MainController {
     private static final Logger LOG = Logger.getLogger(MainController.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserDAO userDAO;
 
     @RequestMapping("/index.fy")
     public ModelAndView index() {
         LOG.debug("ACTION: INDEX, STATUS: START");
         ModelAndView view = new ModelAndView("main/index");
-        User user = userService.read(BigInteger.ONE);
+        User user = userDAO.findUserWithBlacklistUsersByUserId(BigInteger.valueOf(1));
         LOG.trace("FOUND USER: " + user.getEmail());
+        LOG.trace("FOUND USER BLACKLIST: " + user.getBlacklistsById());
         LOG.debug("ACTION: INDEX, STATUS: END");
         return view;
     }

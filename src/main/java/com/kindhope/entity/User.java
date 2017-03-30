@@ -1,6 +1,11 @@
 package com.kindhope.entity;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -185,7 +190,8 @@ public class User {
         return result;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", cascade = CascadeType.ALL)
     public Collection<GroupMember> getGroupMembersById() {
         return groupMembersById;
     }
@@ -194,7 +200,8 @@ public class User {
         this.groupMembersById = groupMembersById;
     }
 
-    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Blacklist> getBlacklistsById() {
         return blacklistsById;
     }
@@ -203,7 +210,8 @@ public class User {
         this.blacklistsById = blacklistsById;
     }
 
-    @OneToMany(mappedBy = "userByBlockedUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByBlockedUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Blacklist> getBlacklistsByBlockedUserId() {
         return blacklistsByBlockedUserId;
     }
@@ -212,7 +220,8 @@ public class User {
         this.blacklistsByBlockedUserId = blacklistsByBlockedUserId;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Comment> getCommentsById() {
         return commentsById;
     }
@@ -221,7 +230,8 @@ public class User {
         this.commentsById = commentsById;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Connection> getConnectionsById() {
         return connectionsById;
     }
@@ -230,7 +240,8 @@ public class User {
         this.connectionsById = connectionsById;
     }
 
-    @OneToMany(mappedBy = "userByFriendId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByFriendId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Connection> getConnectionsByFriendId() {
         return connectionsByFriendId;
     }
@@ -239,7 +250,8 @@ public class User {
         this.connectionsByFriendId = connectionsByFriendId;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<ConnectionRequest> getConnectionRequestsById() {
         return connectionRequestsById;
     }
@@ -248,7 +260,8 @@ public class User {
         this.connectionRequestsById = connectionRequestsById;
     }
 
-    @OneToMany(mappedBy = "userByRequestId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByRequestId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<ConnectionRequest> getConnectionRequestsById_0() {
         return connectionRequestsById_0;
     }
@@ -257,7 +270,8 @@ public class User {
         this.connectionRequestsById_0 = connectionRequestsById_0;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Gallery> getGalleriesById() {
         return galleriesById;
     }
@@ -266,7 +280,8 @@ public class User {
         this.galleriesById = galleriesById;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<Photo> getPhotosById() {
         return photosById;
     }
@@ -276,6 +291,7 @@ public class User {
     }
 
     @ManyToOne
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "profile_photo_id", referencedColumnName = "id", insertable = false, updatable = false)
     public Photo getPhotoByProfilePhotoId() {
         return photoByProfilePhotoId;
@@ -285,7 +301,8 @@ public class User {
         this.photoByProfilePhotoId = photoByProfilePhotoId;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<UserRole> getUserRolesById() {
         return userRolesById;
     }
@@ -293,6 +310,7 @@ public class User {
     public void setUserRolesById(Collection<UserRole> userRolesById) {
         this.userRolesById = userRolesById;
     }
+
 
     @Override
     public String toString() {

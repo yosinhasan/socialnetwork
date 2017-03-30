@@ -55,8 +55,5 @@ public class UserServiceImpl implements UserService {
         return userDAO.findByEmail(email);
     }
 
-    @Override
-    public List<User> findBlacklistUsersByUserId(BigInteger userId) {
-        return userDAO.findBlacklistUsersByUserId(userId);
-    }
+
 }

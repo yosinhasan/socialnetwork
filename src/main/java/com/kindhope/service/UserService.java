@@ -12,5 +12,4 @@ import java.util.List;
 public interface UserService extends GenericService<User> {
     User findByEmail(String email);
 
-    List<User> findBlacklistUsersByUserId(BigInteger userId);
 }

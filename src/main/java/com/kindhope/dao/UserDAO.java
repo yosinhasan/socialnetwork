@@ -3,7 +3,6 @@ package com.kindhope.dao;
 import com.kindhope.entity.User;
 
 import java.math.BigInteger;
-import java.util.List;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
@@ -12,5 +11,23 @@ import java.util.List;
 public interface UserDAO extends GenericDAO<User> {
     User findByEmail(String email);
 
-    List<User> findBlacklistUsersByUserId(BigInteger userId);
+    User findUserWithBlacklistUsersByUserId(BigInteger userId);
+
+    User findUserWithGroupMember(BigInteger userId);
+
+    User findUserWithBlacklistUsersByBlockedUserId(BigInteger userId);
+
+    User findUserWithComments(BigInteger userId);
+
+    User findUserWithConnections(BigInteger userId);
+
+    User findUserWithConnectionsByFriendId(BigInteger friendId);
+
+    User findUserWithConnectionsRequests(BigInteger userId);
+
+    User findUserWithGallery(BigInteger userId);
+
+    User findUserWithPhotos(BigInteger userId);
+
+    User findUserWithUserRoles(BigInteger userId);
 }

@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigInteger;
-import java.util.List;
+import java.util.Collection;
+
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>.
@@ -34,8 +35,8 @@ public class BlacklistController {
         ModelAndView view = new ModelAndView();
         view.setViewName("blacklist/index");
         BigInteger userId = BigInteger.ONE;
-        Iterable<User> s = userService.findBlacklistUsersByUserId(userId);
-
+//        Iterable<User> s = userService.findBlacklistUsersByUserId(userId);
+//        Collection<Blacklist> list = blacklistService.readAll();
         return view;
     }
 
