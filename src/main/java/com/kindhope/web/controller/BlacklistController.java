@@ -1,7 +1,6 @@
 package com.kindhope.web.controller;
 
 import com.kindhope.entity.Blacklist;
-import com.kindhope.entity.User;
 import com.kindhope.service.BlacklistService;
 import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigInteger;
-import java.util.Collection;
 
 
 /**

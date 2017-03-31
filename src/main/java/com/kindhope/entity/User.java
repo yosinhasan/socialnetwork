@@ -1,11 +1,9 @@
 package com.kindhope.entity;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -40,6 +38,14 @@ public class User {
     private Collection<Photo> photosById;
     private Photo photoByProfilePhotoId;
     private Collection<UserRole> userRolesById;
+
+    public User() {
+    }
+
+    public User(BigInteger id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

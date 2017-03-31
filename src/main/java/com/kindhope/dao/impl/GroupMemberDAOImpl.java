@@ -21,6 +21,7 @@ public class GroupMemberDAOImpl extends AbstractPKDAOImpl<GroupMember, GroupMemb
         return getSession().createQuery("select u from GroupMember u", GroupMember.class).getResultList();
     }
 
+    @Transactional
     @Override
     public GroupMember read(Class<GroupMember> groupMemberClass, GroupMemberPK groupMemberPK) {
         return getSession().get(groupMemberClass, groupMemberPK);

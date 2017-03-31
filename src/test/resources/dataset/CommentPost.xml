@@ -1,5 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
+    <KINDHOPE.USER ID="1" NAME="TEST" EMAIL="test@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.USER ID="2" NAME="TEST2" EMAIL="test2@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.POST ID="1" POST="post" USER_ID="1"/>
+    <KINDHOPE.POST ID="2" POST="post" USER_ID="1"/>
+    <KINDHOPE.POST ID="3" POST="post" USER_ID="2"/>
+    <KINDHOPE.POST ID="4" POST="post" USER_ID="2"/>
+    <KINDHOPE.COMMENT ID="1" USER_ID="1" COMMENT="hello world"/>
+    <KINDHOPE.COMMENT ID="2" USER_ID="1" COMMENT="hello world"/>
+    <KINDHOPE.COMMENT ID="3" USER_ID="1" COMMENT="hello world"/>
+    <KINDHOPE.COMMENT ID="4" USER_ID="2" COMMENT="hello world"/>
+    <KINDHOPE.COMMENT ID="5" USER_ID="2" COMMENT="hello world"/>
+    <KINDHOPE.COMMENT ID="6" USER_ID="2" COMMENT="hello world"/>
     <KINDHOPE.COMMENT_POST COMMENT_ID="1" POST_ID="1"/>
     <KINDHOPE.COMMENT_POST COMMENT_ID="2" POST_ID="2"/>
     <KINDHOPE.COMMENT_POST COMMENT_ID="3" POST_ID="3"/>

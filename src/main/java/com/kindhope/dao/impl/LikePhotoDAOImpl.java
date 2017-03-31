@@ -21,6 +21,7 @@ public class LikePhotoDAOImpl extends AbstractPKDAOImpl<LikePhoto, LikePhotoPK> 
         return getSession().createQuery("select u from LikePhoto u", LikePhoto.class).getResultList();
     }
 
+    @Transactional
     @Override
     public LikePhoto read(Class<LikePhoto> likePhotoClass, LikePhotoPK likePhotoPK) {
         return getSession().get(likePhotoClass, likePhotoPK);

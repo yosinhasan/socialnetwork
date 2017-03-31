@@ -3,6 +3,7 @@ package com.kindhope.dao.impl;
 import com.kindhope.dao.BlacklistDAO;
 import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.BlacklistPK;
+import com.kindhope.entity.User;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -103,6 +105,20 @@ public class BlacklistDAOTest extends AbstractDAOImplTest {
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findUsersByUserId() {
+        List<User> blacklists = dao.findUsersByUserId(BigInteger.ONE);
+        assertNotNull(blacklists);
+        assertEquals(2, blacklists.size());
+    }
+
+    @Test
+    public void findUsersByBlockedUserId() {
+        List<User> users = dao.findUsersByBlockedUserId(BigInteger.valueOf(3));
+        assertNotNull(users);
+        assertEquals(1, users.size());
     }
 
     private Blacklist getNewInstance(long id1, long id2) {

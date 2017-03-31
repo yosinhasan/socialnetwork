@@ -21,6 +21,7 @@ public class LikePostDAOImpl extends AbstractPKDAOImpl<LikePost, LikePostPK> imp
         return getSession().createQuery("select u from LikePost u", LikePost.class).getResultList();
     }
 
+    @Transactional
     @Override
     public LikePost read(Class<LikePost> likePostClass, LikePostPK likePostPK) {
         return getSession().get(likePostClass, likePostPK);

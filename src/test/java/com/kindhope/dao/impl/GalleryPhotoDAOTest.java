@@ -3,6 +3,7 @@ package com.kindhope.dao.impl;
 import com.kindhope.dao.GalleryPhotoDAO;
 import com.kindhope.entity.GalleryPhoto;
 import com.kindhope.entity.GalleryPhotoPK;
+import com.kindhope.entity.Photo;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -101,6 +103,13 @@ public class GalleryPhotoDAOTest extends AbstractDAOImplTest {
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findGalleryPhotos() throws Exception {
+        List<Photo> list = dao.findGalleryPhotos(BigInteger.ONE);
+        assertNotNull(list);
+        assertEquals(2, list.size());
     }
 
     private GalleryPhoto getNewInstance(long id1, long id2) {

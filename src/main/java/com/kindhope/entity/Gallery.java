@@ -1,5 +1,8 @@
 package com.kindhope.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Collection;
@@ -80,7 +83,8 @@ public class Gallery {
         this.userByUserId = userByUserId;
     }
 
-    @OneToMany(mappedBy = "galleryByGalleryId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "galleryByGalleryId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<GalleryPhoto> getGalleryPhotosById() {
         return galleryPhotosById;
     }

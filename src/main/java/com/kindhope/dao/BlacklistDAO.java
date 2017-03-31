@@ -2,6 +2,7 @@ package com.kindhope.dao;
 
 import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.BlacklistPK;
+import com.kindhope.entity.User;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,5 +13,8 @@ import java.util.List;
  */
 public interface BlacklistDAO extends GenericDAO<Blacklist>, GenericPKDAO<Blacklist, BlacklistPK> {
 
+    List<User> findUsersByUserId(BigInteger userId);
+
+    List<User> findUsersByBlockedUserId(BigInteger userId);
 
 }

@@ -1,6 +1,7 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.CommentPostDAO;
+import com.kindhope.entity.Comment;
 import com.kindhope.entity.CommentPost;
 import com.kindhope.entity.CommentPostPK;
 import org.dbunit.dataset.IDataSet;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -101,6 +103,13 @@ public class CommentPostDAOTest extends AbstractDAOImplTest {
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findComments() {
+        List<Comment> comments = dao.findComments(BigInteger.valueOf(1));
+        assertNotNull(comments);
+        assertEquals(1, comments.size());
     }
 
     private CommentPost getNewInstance(long id1, long id2) {

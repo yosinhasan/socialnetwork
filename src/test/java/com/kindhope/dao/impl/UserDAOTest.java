@@ -1,21 +1,16 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.UserDAO;
-import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.User;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.hibernate.Hibernate;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
-import java.util.Collection;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
@@ -57,61 +52,73 @@ public class UserDAOTest extends AbstractDAOImplTest {
         User user = dao.findByEmail("test@tset.dom");
         assertNotNull(user);
     }
+
     @Test
     public void findUserWithBlacklistUsersByUserId() {
         User user = dao.findUserWithBlacklistUsersByUserId(BigInteger.ONE);
         assertEquals(2, user.getBlacklistsById().size());
     }
+
     @Test
     public void findUserWithBlacklistUsersByUserIdShouldBeEmpty() {
         User user = dao.findUserWithBlacklistUsersByUserId(BigInteger.valueOf(2));
         assertEquals(0, user.getBlacklistsById().size());
     }
+
     @Test
     public void findUserWithGroupMember() {
         User user = dao.findUserWithGroupMember(BigInteger.ONE);
         assertEquals(2, user.getGroupMembersById().size());
     }
+
     @Test
     public void findUserWithGroupMemberShouldBeEmpty() {
         User user = dao.findUserWithGroupMember(BigInteger.valueOf(3));
         assertEquals(0, user.getGroupMembersById().size());
     }
+
     @Test
     public void findUserWithBlacklistUsersByBlockedUserId() {
         User user = dao.findUserWithBlacklistUsersByBlockedUserId(BigInteger.ONE);
         assertEquals(1, user.getBlacklistsByBlockedUserId().size());
     }
+
     @Test
     public void findUserWithBlacklistUsersByBlockedUserIdShouldBeEmpty() {
         User user = dao.findUserWithBlacklistUsersByBlockedUserId(BigInteger.valueOf(4));
         assertEquals(0, user.getBlacklistsByBlockedUserId().size());
     }
+
     @Test
     public void findUserWithComments() {
         User user = dao.findUserWithComments(BigInteger.ONE);
         assertEquals(3, user.getCommentsById().size());
     }
+
     @Test
     public void findUserWithCommentsShouldBeEmpty() {
         User user = dao.findUserWithComments(BigInteger.valueOf(3));
         assertEquals(0, user.getCommentsById().size());
     }
+
     @Test
     public void findUserWithConnections() {
         User user = dao.findUserWithConnections(BigInteger.ONE);
         assertEquals(2, user.getConnectionsById().size());
     }
+
     @Test
     public void findUserWithConnectionsShouldBeEmpty() {
         User user = dao.findUserWithConnections(BigInteger.valueOf(3));
         assertEquals(0, user.getConnectionsById().size());
     }
+
     @Test
     public void findUserWithConnectionsByFriendId() {
         User user = dao.findUserWithConnectionsByFriendId(BigInteger.ONE);
         assertEquals(0, user.getConnectionsByFriendId().size());
     }
+
     @Test
     public void findUserWithConnectionsByFriendIdShouldBeEmpty() {
         User user = dao.findUserWithConnectionsByFriendId(BigInteger.valueOf(4));
@@ -123,36 +130,43 @@ public class UserDAOTest extends AbstractDAOImplTest {
         User user = dao.findUserWithConnectionsRequests(BigInteger.ONE);
         assertEquals(2, user.getConnectionRequestsById().size());
     }
+
     @Test
     public void findUserWithConnectionsRequestsShouldBeEmpty() {
         User user = dao.findUserWithConnectionsRequests(BigInteger.valueOf(3));
         assertEquals(0, user.getConnectionRequestsById().size());
     }
+
     @Test
     public void findUserWithGallery() {
         User user = dao.findUserWithGallery(BigInteger.ONE);
         assertEquals(2, user.getGalleriesById().size());
     }
+
     @Test
     public void findUserWithGalleryShouldBeEmpty() {
         User user = dao.findUserWithGallery(BigInteger.valueOf(3));
         assertEquals(0, user.getGalleriesById().size());
     }
+
     @Test
     public void findUserWithPhotos() {
         User user = dao.findUserWithPhotos(BigInteger.ONE);
         assertEquals(2, user.getPhotosById().size());
     }
+
     @Test
     public void findUserWithPhotosShouldBeEmpty() {
         User user = dao.findUserWithPhotos(BigInteger.valueOf(3));
         assertEquals(0, user.getPhotosById().size());
     }
+
     @Test
     public void findUserWithUserRoles() {
         User user = dao.findUserWithUserRoles(BigInteger.ONE);
         assertEquals(2, user.getUserRolesById().size());
     }
+
     @Test
     public void findUserWithUserRolesShouldBeEmpty() {
         User user = dao.findUserWithUserRoles(BigInteger.valueOf(3));

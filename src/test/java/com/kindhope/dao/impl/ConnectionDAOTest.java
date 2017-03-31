@@ -3,6 +3,7 @@ package com.kindhope.dao.impl;
 import com.kindhope.dao.ConnectionDAO;
 import com.kindhope.entity.Connection;
 import com.kindhope.entity.ConnectionPK;
+import com.kindhope.entity.User;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -102,6 +104,14 @@ public class ConnectionDAOTest extends AbstractDAOImplTest {
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void findConnections() {
+        List<User> users = dao.findConnections(BigInteger.ONE);
+        assertNotNull(users);
+        assertEquals(2, users.size());
+    }
+
 
     private Connection getNewInstance(long id1, long id2) {
         Connection test = new Connection();

@@ -1,5 +1,7 @@
 package com.kindhope.mockmvc;
 
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.Test;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -12,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @version 0.0.1
  */
 public class MainTest extends AbstractTest {
-
 
     @Test
     public void redirectToLogin() throws Exception {

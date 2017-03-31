@@ -30,6 +30,7 @@ public abstract class AbstractPKDAOImpl<T, PK> extends AbstractDAOImpl<T> implem
         throw new RuntimeException(Error.METHOD_NOT_SUPPORTED);
     }
 
+    @Transactional
     @Override
     public PK save(T object) {
         return (PK) getSession().save(object);

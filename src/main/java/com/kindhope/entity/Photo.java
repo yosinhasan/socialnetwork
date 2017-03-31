@@ -1,5 +1,8 @@
 package com.kindhope.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Collection;
@@ -17,6 +20,16 @@ public class Photo {
     private Collection<GalleryPhoto> galleryPhotosById;
     private User userByUserId;
     private Collection<User> usersById;
+
+    public Photo() {
+
+    }
+
+    public Photo(BigInteger id, BigInteger userId, String name) {
+        this.id = id;
+        this.userId = userId;
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,7 +84,8 @@ public class Photo {
         return result;
     }
 
-    @OneToMany(mappedBy = "photoByPhotoId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "photoByPhotoId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Collection<GalleryPhoto> getGalleryPhotosById() {
         return galleryPhotosById;
     }

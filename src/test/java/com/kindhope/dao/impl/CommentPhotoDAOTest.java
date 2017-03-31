@@ -1,6 +1,7 @@
 package com.kindhope.dao.impl;
 
 import com.kindhope.dao.CommentPhotoDAO;
+import com.kindhope.entity.Comment;
 import com.kindhope.entity.CommentPhoto;
 import com.kindhope.entity.CommentPhotoPK;
 import org.dbunit.dataset.IDataSet;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -31,8 +33,8 @@ public class CommentPhotoDAOTest extends AbstractDAOImplTest {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        object = getNewInstance(1, 1);
-        pk = getNewPKInstance(1, 1);
+        object = getNewInstance(1, 6);
+        pk = getNewPKInstance(1, 6);
     }
 
     @Override
@@ -81,7 +83,7 @@ public class CommentPhotoDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void delete() throws Exception {
-        CommentPhoto test = dao.read(CommentPhoto.class, pk);
+        CommentPhoto test = dao.read(CommentPhoto.class, getNewPKInstance(6, 6));
         int expected = dao.readAll().size() - 1;
         dao.delete(test);
         int actual = dao.readAll().size();
@@ -101,6 +103,13 @@ public class CommentPhotoDAOTest extends AbstractDAOImplTest {
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findComments() {
+        List<Comment> comments = dao.findComments(BigInteger.valueOf(6));
+        assertNotNull(comments);
+        assertEquals(3, comments.size());
     }
 
     private CommentPhoto getNewInstance(long id1, long id2) {

@@ -2,6 +2,9 @@ package com.kindhope.mockmvc;
 
 import com.kindhope.entity.User;
 import com.kindhope.service.UserService;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.dataset.xml.XmlDataSet;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,12 @@ public class AuthenticationTest extends AbstractTest {
         super.setUp();
         User user = getUser();
         userService.create(user);
+    }
+
+    @Override
+    public IDataSet getDataSet() throws Exception {
+        IDataSet dataSet = new FlatXmlDataSetBuilder().build(this.getClass().getClassLoader().getResourceAsStream("dataset/Authentication.xml"));
+        return dataSet;
     }
 
     @Test

@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -74,6 +75,19 @@ public class GalleryDAOTest extends AbstractDAOImplTest {
         dao.delete(test);
         int actual = dao.readAll().size();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findAllByUserId() {
+        List<Gallery> list = dao.findAllByUserId(BigInteger.ONE);
+        assertNotNull(list);
+        assertEquals(2, list.size());
+    }
+
+    @Test
+    public void findByGalleryIdAndUserId() {
+        Gallery gallery = dao.findByGalleryIdAndUserId(BigInteger.ONE, BigInteger.valueOf(8));
+        assertNotNull(gallery);
     }
 
     private Gallery getObject() {

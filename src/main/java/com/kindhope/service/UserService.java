@@ -2,9 +2,6 @@ package com.kindhope.service;
 
 import com.kindhope.entity.User;
 
-import java.math.BigInteger;
-import java.util.List;
-
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1

@@ -77,4 +77,5 @@ public abstract class AbstractTest {
         IDataSet dataSet = new FlatXmlDataSetBuilder().build(this.getClass().getClassLoader().getResourceAsStream("dataset/User.xml"));
         return dataSet;
     }
+
 }

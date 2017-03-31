@@ -29,7 +29,7 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO {
     @Override
     public User findByEmail(String email) {
         LOG.debug("FIND BY EMAIL START");
-        Query<User> query = getSession().createQuery("from User u left join fetch u.photoByProfilePhotoId photo where u.email = :userEmail", User.class);
+        Query<User> query = getSession().createQuery("from User u where u.email = :userEmail", User.class);
         query.setParameter("userEmail", email);
         LOG.debug("FIND BY EMAIL END");
         return query.uniqueResult();

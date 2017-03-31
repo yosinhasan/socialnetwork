@@ -77,6 +77,7 @@ public class CommentDAOTest extends AbstractDAOImplTest {
         assertEquals(expected, actual);
     }
 
+
     private Comment getObject() {
         Comment test = new Comment();
         test.setComment("test");

@@ -21,6 +21,7 @@ public class GroupPostDAOImpl extends AbstractPKDAOImpl<GroupPost, GroupPostPK> 
         return getSession().createQuery("select u from GroupPost u", GroupPost.class).getResultList();
     }
 
+    @Transactional
     @Override
     public GroupPost read(Class<GroupPost> groupPostClass, GroupPostPK groupPostPK) {
         return getSession().get(groupPostClass, groupPostPK);
