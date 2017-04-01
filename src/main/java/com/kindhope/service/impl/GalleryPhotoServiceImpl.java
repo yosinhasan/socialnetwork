@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.GalleryPhotoDAO;
 import com.kindhope.entity.GalleryPhoto;
+import com.kindhope.entity.GalleryPhotoPK;
 import com.kindhope.service.GalleryPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class GalleryPhotoServiceImpl implements GalleryPhotoService {
     @Override
     public List<GalleryPhoto> readAll() {
         return galleryPhotoDAO.readAll();
+    }
+
+    @Override
+    public GalleryPhoto read(Class<GalleryPhoto> galleryPhotoClass, GalleryPhotoPK galleryPhotoPK) {
+        return galleryPhotoDAO.read(galleryPhotoClass, galleryPhotoPK);
+    }
+
+    @Override
+    public GalleryPhotoPK save(GalleryPhoto object) {
+        return galleryPhotoDAO.save(object);
     }
 }

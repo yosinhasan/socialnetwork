@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.GroupPostDAO;
 import com.kindhope.entity.GroupPost;
+import com.kindhope.entity.GroupPostPK;
 import com.kindhope.service.GroupPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class GroupPostServiceImpl implements GroupPostService {
     @Override
     public List<GroupPost> readAll() {
         return groupPostDAO.readAll();
+    }
+
+    @Override
+    public GroupPost read(Class<GroupPost> groupPostClass, GroupPostPK groupPostPK) {
+        return groupPostDAO.read(groupPostClass, groupPostPK);
+    }
+
+    @Override
+    public GroupPostPK save(GroupPost object) {
+        return groupPostDAO.save(object);
     }
 }

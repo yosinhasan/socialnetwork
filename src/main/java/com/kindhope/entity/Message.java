@@ -13,11 +13,32 @@ import java.sql.Timestamp;
 public class Message {
     private BigInteger id;
     private BigInteger userId;
-    private BigInteger friendId;
+    private BigInteger conversationId;
     private String content;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
+    private Timestamp seenAt;
+    private Conversation conversationById;
+
+    public Message() {
+
+    }
+
+    public Message(BigInteger id, BigInteger userId, BigInteger conversationId, String content) {
+        this.id = id;
+        this.userId = userId;
+        this.conversationId = conversationId;
+        this.content = content;
+//        this.seenAt = seenAt;
+    }
+    public Message(BigInteger id, BigInteger userId, BigInteger conversationId, String content, Timestamp seenAt) {
+        this.id = id;
+        this.userId = userId;
+        this.conversationId = conversationId;
+        this.content = content;
+        this.seenAt = seenAt;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,13 +62,13 @@ public class Message {
     }
 
     @Basic
-    @Column(name = "friend_id")
-    public BigInteger getFriendId() {
-        return friendId;
+    @Column(name = "conversation_id")
+    public BigInteger getConversationId() {
+        return conversationId;
     }
 
-    public void setFriendId(BigInteger friendId) {
-        this.friendId = friendId;
+    public void setConversationId(BigInteger friendId) {
+        this.conversationId = friendId;
     }
 
     @Basic
@@ -90,6 +111,16 @@ public class Message {
         this.deletedAt = deletedAt;
     }
 
+    @Basic
+    @Column(name = "seen_at")
+    public Timestamp getSeenAt() {
+        return seenAt;
+    }
+
+    public void setSeenAt(Timestamp seenAt) {
+        this.seenAt = seenAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -99,24 +130,36 @@ public class Message {
 
         if (id != null ? !id.equals(message.id) : message.id != null) return false;
         if (userId != null ? !userId.equals(message.userId) : message.userId != null) return false;
-        if (friendId != null ? !friendId.equals(message.friendId) : message.friendId != null) return false;
+        if (conversationId != null ? !conversationId.equals(message.conversationId) : message.conversationId != null)
+            return false;
         if (content != null ? !content.equals(message.content) : message.content != null) return false;
         if (createdAt != null ? !createdAt.equals(message.createdAt) : message.createdAt != null) return false;
         if (updatedAt != null ? !updatedAt.equals(message.updatedAt) : message.updatedAt != null) return false;
         if (deletedAt != null ? !deletedAt.equals(message.deletedAt) : message.deletedAt != null) return false;
-
-        return true;
+        return seenAt != null ? seenAt.equals(message.seenAt) : message.seenAt == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (friendId != null ? friendId.hashCode() : 0);
+        result = 31 * result + (conversationId != null ? conversationId.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
         result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
+        result = 31 * result + (seenAt != null ? seenAt.hashCode() : 0);
         return result;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "conversation_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    public Conversation getConversationById() {
+        return conversationById;
+    }
+
+    public void setConversationById(Conversation conversationById) {
+        this.conversationById = conversationById;
+    }
+
 }

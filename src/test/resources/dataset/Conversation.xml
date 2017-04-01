@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <KINDHOPE.USER ID="1" NAME="TEST" EMAIL="test@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.USER ID="2" NAME="TEST2" EMAIL="test2@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.USER ID="3" NAME="TEST3" EMAIL="test3@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.USER ID="4" NAME="TEST4" EMAIL="test4@tset.dom" PASSWORD="123456"/>
+    <KINDHOPE.CONVERSATION ID="1" USER_ID="1" FRIEND_ID="2"/>
+    <KINDHOPE.CONVERSATION ID="2" USER_ID="2" FRIEND_ID="3"/>
+    <KINDHOPE.CONVERSATION ID="3" USER_ID="3" FRIEND_ID="1"/>
+    <KINDHOPE.CONVERSATION ID="4" USER_ID="4" FRIEND_ID="3"/>
+    <KINDHOPE.DELETED_CONVERSATION USER_ID="1" CONVERSATION_ID="1"/>
+    <KINDHOPE.DELETED_CONVERSATION USER_ID="4" CONVERSATION_ID="4"/>
+    <KINDHOPE.MESSAGE id="1" user_id="1" conversation_id="1" content="content1"/>
+    <KINDHOPE.MESSAGE id="2" user_id="2" conversation_id="1" content="content2"/>
+    <KINDHOPE.MESSAGE id="3" user_id="1" conversation_id="1" content="content3"/>
+    <KINDHOPE.MESSAGE id="4" user_id="2" conversation_id="1" content="content4"/>
+    <KINDHOPE.MESSAGE id="5" user_id="1" conversation_id="1" content="content4"/>
+    <KINDHOPE.MESSAGE id="6" user_id="2" conversation_id="1" content="content4"/>
+
+
+</dataset>

@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.LikePostDAO;
 import com.kindhope.entity.LikePost;
+import com.kindhope.entity.LikePostPK;
 import com.kindhope.service.LikePostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class LikePostServiceImpl implements LikePostService {
     @Override
     public List<LikePost> readAll() {
         return likePostDAO.readAll();
+    }
+
+    @Override
+    public LikePost read(Class<LikePost> likePostClass, LikePostPK likePostPK) {
+        return likePostDAO.read(likePostClass, likePostPK);
+    }
+
+    @Override
+    public LikePostPK save(LikePost object) {
+        return likePostDAO.save(object);
     }
 }

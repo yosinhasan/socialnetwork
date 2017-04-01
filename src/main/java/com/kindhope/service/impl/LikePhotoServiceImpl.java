@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.LikePhotoDAO;
 import com.kindhope.entity.LikePhoto;
+import com.kindhope.entity.LikePhotoPK;
 import com.kindhope.service.LikePhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class LikePhotoServiceImpl implements LikePhotoService {
     @Override
     public List<LikePhoto> readAll() {
         return likePhotoDAO.readAll();
+    }
+
+    @Override
+    public LikePhoto read(Class<LikePhoto> likePhotoClass, LikePhotoPK likePhotoPK) {
+        return likePhotoDAO.read(likePhotoClass, likePhotoPK);
+    }
+
+    @Override
+    public LikePhotoPK save(LikePhoto object) {
+        return likePhotoDAO.save(object);
     }
 }

@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.ConnectionDAO;
 import com.kindhope.entity.Connection;
+import com.kindhope.entity.ConnectionPK;
 import com.kindhope.service.ConnectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public List<Connection> readAll() {
         return connectionDAO.readAll();
+    }
+
+    @Override
+    public Connection read(Class<Connection> connectionClass, ConnectionPK connectionPK) {
+        return connectionDAO.read(connectionClass, connectionPK);
+    }
+
+    @Override
+    public ConnectionPK save(Connection object) {
+        return connectionDAO.save(object);
     }
 }

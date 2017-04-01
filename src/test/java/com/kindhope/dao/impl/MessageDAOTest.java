@@ -9,6 +9,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -77,11 +80,37 @@ public class MessageDAOTest extends AbstractDAOImplTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void findConversationMessages() {
+        List<Message> test = dao.findConversationMessages(BigInteger.valueOf(1));
+        assertNotNull(test);
+        assertEquals(4, test.size());
+    }
+
+    @Test
+    public void findLastMessage() {
+        Message message = dao.findLastMessage(BigInteger.ONE);
+        assertNotNull(message);
+        assertEquals(BigInteger.valueOf(6), message.getId());
+        assertEquals(BigInteger.valueOf(1), message.getUserId());
+        assertEquals(BigInteger.valueOf(1), message.getConversationId());
+        assertEquals("content4", message.getContent());
+
+    }
+    @Test
+    public void findUserConversationsLastMessages() {
+        List<BigInteger> list = Arrays.asList(BigInteger.ONE, BigInteger.valueOf(2));
+        List<Message> messages = dao.findUserConversationsLastMessages(list);
+        assertNotNull(messages);
+        assertEquals(2, messages.size());
+        assertEquals("content4", messages.get(1).getContent());
+    }
+
     private Message getObject() {
         Message test = new Message();
         test.setContent("content test");
         test.setUserId(BigInteger.ONE);
-        test.setFriendId(BigInteger.valueOf(2));
+        test.setConversationId(BigInteger.valueOf(2));
         return test;
     }
 

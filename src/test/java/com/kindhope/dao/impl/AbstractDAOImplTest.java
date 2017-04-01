@@ -54,11 +54,13 @@ public abstract class AbstractDAOImplTest {
             statement.executeUpdate("DELETE  FROM kindhope.connection");
             statement.executeUpdate("DELETE  FROM kindhope.connection_request");
             statement.executeUpdate("DELETE  FROM kindhope.gallery_photo");
+            statement.executeUpdate("DELETE  FROM kindhope.deleted_conversation");
             statement.executeUpdate("DELETE  FROM kindhope.group_member");
             statement.executeUpdate("DELETE  FROM kindhope.group_post");
             statement.executeUpdate("DELETE  FROM kindhope.like_photo");
             statement.executeUpdate("DELETE  FROM kindhope.like_post");
             statement.executeUpdate("DELETE  FROM kindhope.user_role");
+            statement.executeUpdate("DELETE  FROM kindhope.conversation");
             statement.executeUpdate("DELETE  FROM kindhope.comment");
             statement.executeUpdate("DELETE  FROM kindhope.message");
             statement.executeUpdate("DELETE  FROM kindhope.photo");

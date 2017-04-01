@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.BlacklistDAO;
 import com.kindhope.entity.Blacklist;
+import com.kindhope.entity.BlacklistPK;
 import com.kindhope.service.BlacklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,13 @@ public class BlacklistServiceImpl implements BlacklistService {
         return blacklistDAO.readAll();
     }
 
+    @Override
+    public Blacklist read(Class<Blacklist> blacklistClass, BlacklistPK pk) {
+        return blacklistDAO.read(blacklistClass, pk);
+    }
+
+    @Override
+    public BlacklistPK save(Blacklist object) {
+        return blacklistDAO.save(object);
+    }
 }

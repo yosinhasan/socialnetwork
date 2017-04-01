@@ -297,7 +297,6 @@ public class User {
     }
 
     @ManyToOne
-    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "profile_photo_id", referencedColumnName = "id", insertable = false, updatable = false)
     public Photo getPhotoByProfilePhotoId() {
         return photoByProfilePhotoId;

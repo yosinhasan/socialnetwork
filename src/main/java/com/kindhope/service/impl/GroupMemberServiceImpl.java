@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.GroupMemberDAO;
 import com.kindhope.entity.GroupMember;
+import com.kindhope.entity.GroupMemberPK;
 import com.kindhope.service.GroupMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class GroupMemberServiceImpl implements GroupMemberService {
     @Override
     public List<GroupMember> readAll() {
         return groupMemberDAO.readAll();
+    }
+
+    @Override
+    public GroupMember read(Class<GroupMember> groupMemberClass, GroupMemberPK groupMemberPK) {
+        return groupMemberDAO.read(groupMemberClass, groupMemberPK);
+    }
+
+    @Override
+    public GroupMemberPK save(GroupMember object) {
+        return groupMemberDAO.save(object);
     }
 }

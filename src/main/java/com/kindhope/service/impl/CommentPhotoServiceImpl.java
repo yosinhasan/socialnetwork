@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.CommentPhotoDAO;
 import com.kindhope.entity.CommentPhoto;
+import com.kindhope.entity.CommentPhotoPK;
 import com.kindhope.service.CommentPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,4 +44,13 @@ public class CommentPhotoServiceImpl implements CommentPhotoService {
         return commentPhotoDAO.readAll();
     }
 
+    @Override
+    public CommentPhoto read(Class<CommentPhoto> commentPhotoClass, CommentPhotoPK commentPhotoPK) {
+        return commentPhotoDAO.read(commentPhotoClass, commentPhotoPK);
+    }
+
+    @Override
+    public CommentPhotoPK save(CommentPhoto object) {
+        return commentPhotoDAO.save(object);
+    }
 }

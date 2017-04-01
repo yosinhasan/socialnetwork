@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.CommentPostDAO;
 import com.kindhope.entity.CommentPost;
+import com.kindhope.entity.CommentPostPK;
 import com.kindhope.service.CommentPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,15 @@ public class CommentPostServiceImpl implements CommentPostService {
     @Override
     public List<CommentPost> readAll() {
         return commentPostDAO.readAll();
+    }
+
+    @Override
+    public CommentPost read(Class<CommentPost> commentPostClass, CommentPostPK commentPostPK) {
+        return commentPostDAO.read(commentPostClass, commentPostPK);
+    }
+
+    @Override
+    public CommentPostPK save(CommentPost object) {
+        return commentPostDAO.save(object);
     }
 }

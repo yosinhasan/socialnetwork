@@ -2,6 +2,7 @@ package com.kindhope.service.impl;
 
 import com.kindhope.dao.ConnectionRequestDAO;
 import com.kindhope.entity.ConnectionRequest;
+import com.kindhope.entity.ConnectionRequestPK;
 import com.kindhope.service.ConnectionRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,15 @@ public class ConnectionRequestServiceImpl implements ConnectionRequestService {
     @Override
     public List<ConnectionRequest> readAll() {
         return connectionRequestDAO.readAll();
+    }
+
+    @Override
+    public ConnectionRequest read(Class<ConnectionRequest> connectionRequestClass, ConnectionRequestPK connectionRequestPK) {
+        return connectionRequestDAO.read(connectionRequestClass, connectionRequestPK);
+    }
+
+    @Override
+    public ConnectionRequestPK save(ConnectionRequest object) {
+        return connectionRequestDAO.save(object);
     }
 }

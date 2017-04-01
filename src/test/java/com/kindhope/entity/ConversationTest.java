@@ -15,12 +15,12 @@ import static org.junit.Assert.assertTrue;
  * @author Yosin_Hasan<yosinhasan@gmail.com>
  * @version 0.0.1
  */
-public class MessageTest {
-    private Message testObject;
+public class ConversationTest {
+    private Conversation testObject;
 
     @Before
     public void setUp() throws Exception {
-        testObject = new Message();
+        testObject = new Conversation();
     }
 
     @After
@@ -42,15 +42,8 @@ public class MessageTest {
 
     @Test
     public void testFriendId() throws Exception {
-        testObject.setConversationId(BigInteger.TEN);
-        assertEquals(BigInteger.TEN, testObject.getConversationId());
-    }
-
-    @Test
-    public void testContent() throws Exception {
-        String expected = "test";
-        testObject.setContent(expected);
-        assertEquals(expected, testObject.getContent());
+        testObject.setFriendId(BigInteger.TEN);
+        assertEquals(BigInteger.TEN, testObject.getFriendId());
     }
 
     @Test
@@ -60,12 +53,6 @@ public class MessageTest {
         assertEquals(expected, testObject.getCreatedAt());
     }
 
-    @Test
-    public void testUpdatedAt() throws Exception {
-        Timestamp expected = Timestamp.from(Instant.now());
-        testObject.setUpdatedAt(expected);
-        assertEquals(expected, testObject.getUpdatedAt());
-    }
 
     @Test
     public void testDeletedAt() throws Exception {
@@ -76,7 +63,7 @@ public class MessageTest {
 
     @Test
     public void equals() throws Exception {
-        Message object = new Message();
+        Conversation object = new Conversation();
         assertTrue(testObject.equals(object));
     }
 

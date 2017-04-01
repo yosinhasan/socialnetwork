@@ -29,6 +29,8 @@
         <mapping class="com.kindhope.entity.Post"/>
         <mapping class="com.kindhope.entity.Role"/>
         <mapping class="com.kindhope.entity.UserRole"/>
+        <mapping class="com.kindhope.entity.Conversation"/>
+        <mapping class="com.kindhope.entity.DeletedConversation"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
