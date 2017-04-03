@@ -32,6 +32,7 @@ public class Message {
         this.content = content;
 //        this.seenAt = seenAt;
     }
+
     public Message(BigInteger id, BigInteger userId, BigInteger conversationId, String content, Timestamp seenAt) {
         this.id = id;
         this.userId = userId;

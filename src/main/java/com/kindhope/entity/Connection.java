@@ -20,6 +20,15 @@ public class Connection {
     private User userByUserId;
     private User userByFriendId;
 
+
+    public Connection() {
+    }
+
+    public Connection(BigInteger userId, BigInteger friendId) {
+        this.userId = userId;
+        this.friendId = friendId;
+    }
+
     @Id
     @Column(name = "user_id")
     public BigInteger getUserId() {
@@ -114,5 +123,10 @@ public class Connection {
 
     public void setUserByFriendId(User userByFriendId) {
         this.userByFriendId = userByFriendId;
+    }
+
+
+    public static final Connection valueOf(BigInteger userId, BigInteger friendId) {
+        return new Connection(userId, friendId);
     }
 }

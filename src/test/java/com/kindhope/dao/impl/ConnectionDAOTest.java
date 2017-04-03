@@ -35,6 +35,10 @@ public class ConnectionDAOTest extends AbstractDAOImplTest {
         super.setUp();
         object = getNewInstance(1, 2);
         pk = getNewPKInstance(1, 2);
+        dao.removeConnection(BigInteger.valueOf(6), BigInteger.valueOf(5));
+        dao.removeConnection(BigInteger.valueOf(6), BigInteger.valueOf(4));
+        dao.removeConnection(BigInteger.valueOf(3), BigInteger.valueOf(5));
+
     }
 
     @Override
@@ -112,6 +116,67 @@ public class ConnectionDAOTest extends AbstractDAOImplTest {
         assertEquals(2, users.size());
     }
 
+    @Test
+    public void findFollowers() {
+        List<User> users = dao.findFollowers(BigInteger.ONE);
+        assertNotNull(users);
+        assertEquals(0, users.size());
+        users = dao.findFollowers(BigInteger.valueOf(6));
+        assertNotNull(users);
+        assertEquals(2, users.size());
+    }
+
+
+    @Test
+    public void countFollowers() {
+        Long actual = dao.countFollowers(BigInteger.valueOf(6));
+        assertEquals(Long.valueOf(2), actual);
+        actual = dao.countFollowers(BigInteger.valueOf(1));
+        assertEquals(Long.valueOf(0), actual);
+    }
+
+    @Test
+    public void findFollowing() {
+        List<User> users = dao.findFollowing(BigInteger.ONE);
+        assertNotNull(users);
+        assertEquals(0, users.size());
+        users = dao.findFollowing(BigInteger.valueOf(5));
+        assertNotNull(users);
+        assertEquals(2, users.size());
+    }
+
+    @Test
+    public void countFollowing() {
+        Long actual = dao.countFollowings(BigInteger.valueOf(6));
+        assertEquals(Long.valueOf(0), actual);
+        actual = dao.countFollowings(BigInteger.valueOf(5));
+        assertEquals(Long.valueOf(2), actual);
+    }
+
+    @Test
+    public void countConnections() {
+        Long actual = dao.countConnections(BigInteger.ONE);
+        assertEquals(Long.valueOf(2), actual);
+        actual = dao.countConnections(BigInteger.valueOf(6));
+        assertEquals(Long.valueOf(0), actual);
+    }
+    @Test
+    public void removeConnection() {
+        Connection test = dao.read(Connection.class, ConnectionPK.valueOf(BigInteger.valueOf(6), BigInteger.valueOf(5)));
+        assertNotNull(test);
+        assertNotNull(test.getDeletedAt());
+        test = dao.read(Connection.class, ConnectionPK.valueOf(BigInteger.valueOf(6), BigInteger.valueOf(4)));
+        assertNotNull(test);
+        assertNotNull(test.getDeletedAt());
+    }
+    @Test
+    public void restoreConnection() {
+        dao.restoreConnection(BigInteger.valueOf(6), BigInteger.valueOf(5));
+        Connection test = dao.read(Connection.class, ConnectionPK.valueOf(BigInteger.valueOf(6), BigInteger.valueOf(5)));
+        assertNotNull(test);
+        assertNull(test.getDeletedAt());
+        assertNotNull(test.getUpdatedAt());
+    }
 
     private Connection getNewInstance(long id1, long id2) {
         Connection test = new Connection();

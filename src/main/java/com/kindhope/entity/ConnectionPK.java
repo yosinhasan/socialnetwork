@@ -13,6 +13,15 @@ public class ConnectionPK implements Serializable {
     private BigInteger userId;
     private BigInteger friendId;
 
+    public ConnectionPK() {
+
+    }
+
+    public ConnectionPK(BigInteger userId, BigInteger friendId) {
+        this.userId = userId;
+        this.friendId = friendId;
+    }
+
     @Column(name = "user_id")
     @Id
     public BigInteger getUserId() {
@@ -52,4 +61,9 @@ public class ConnectionPK implements Serializable {
         result = 31 * result + (friendId != null ? friendId.hashCode() : 0);
         return result;
     }
+
+    public static final ConnectionPK valueOf(BigInteger userId, BigInteger friendId) {
+        return new ConnectionPK(userId, friendId);
+    }
+
 }

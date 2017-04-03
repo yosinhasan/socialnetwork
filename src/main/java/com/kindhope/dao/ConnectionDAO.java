@@ -13,4 +13,25 @@ import java.util.List;
  */
 public interface ConnectionDAO extends GenericDAO<Connection>, GenericPKDAO<Connection, ConnectionPK> {
     List<User> findConnections(BigInteger userId);
+
+    List<User> findFollowers(BigInteger userId);
+
+    List<User> findFollowing(BigInteger userId);
+
+    Long countConnections(BigInteger userId);
+
+    Long countFollowers(BigInteger userId);
+
+    Long countFollowings(BigInteger userId);
+
+    void removeConnection(BigInteger userId, BigInteger friendId);
+
+    void restoreConnection(BigInteger userId, BigInteger friendId);
+
+    /*
+        List<User> findUnConnectedPeople(BigInteger userId); // wi
+        List<User> findAllPeopleWithMarkIfConnectedOrNot(BigInteger userId); //
+
+
+     */
 }

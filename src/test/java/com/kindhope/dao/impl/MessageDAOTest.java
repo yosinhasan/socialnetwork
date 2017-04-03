@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -97,6 +96,7 @@ public class MessageDAOTest extends AbstractDAOImplTest {
         assertEquals("content4", message.getContent());
 
     }
+
     @Test
     public void findUserConversationsLastMessages() {
         List<BigInteger> list = Arrays.asList(BigInteger.ONE, BigInteger.valueOf(2));
@@ -104,6 +104,21 @@ public class MessageDAOTest extends AbstractDAOImplTest {
         assertNotNull(messages);
         assertEquals(2, messages.size());
         assertEquals("content4", messages.get(1).getContent());
+    }
+
+    @Test
+    public void findUserConversationsLastMessagesByUserId() {
+        List<Message> messages = dao.findUserConversationsLastMessages(BigInteger.ONE);
+        assertNotNull(messages);
+        assertEquals(2, messages.size());
+        assertEquals("content4", messages.get(1).getContent());
+    }
+
+    @Test
+    public void addSeenAtTimestamp() {
+        boolean actual = dao.addSeenAtTimestamp(BigInteger.ONE, BigInteger.ONE);
+        assertEquals(true, actual);
+        List<Message> list = dao.findConversationMessages(BigInteger.ONE);
     }
 
     private Message getObject() {

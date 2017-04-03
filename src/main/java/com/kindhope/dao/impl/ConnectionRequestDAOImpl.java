@@ -55,4 +55,19 @@ public class ConnectionRequestDAOImpl extends AbstractPKDAOImpl<ConnectionReques
         LOG.debug("FIND CONNECTION SENT REQUESTS BY  USER ID END");
         return list;
     }
+
+    @Override
+    public void removeRequest(BigInteger userId, BigInteger requestId) {
+
+    }
+
+    @Override
+    public void restoreRequest(BigInteger userId, BigInteger requestId) {
+
+    }
+
+    @Override
+    public Long countRequests(BigInteger userId) {
+        return null;
+    }
 }
