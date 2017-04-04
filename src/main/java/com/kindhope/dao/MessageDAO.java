@@ -19,9 +19,5 @@ public interface MessageDAO extends GenericDAO<Message> {
 
     List<Message> findUserConversationsLastMessages(BigInteger userId);
 
-    List<Message> findUserConversationsLastMessagesWithUnseenCount(List<BigInteger> conversationIds);
-
-    List<Message> findUserConversationsLastMessagesWithUnseenCount(BigInteger userId);
-
     boolean addSeenAtTimestamp(BigInteger conversationId, BigInteger userId);
 }

@@ -20,6 +20,15 @@ public class ConnectionRequest {
     private User userByUserId;
     private User userByRequestId;
 
+    public ConnectionRequest() {
+
+    }
+
+    public ConnectionRequest(BigInteger userId, BigInteger requestId) {
+        this.userId = userId;
+        this.requestId = requestId;
+    }
+
     @Id
     @Column(name = "user_id")
     public BigInteger getUserId() {
@@ -114,5 +123,9 @@ public class ConnectionRequest {
 
     public void setUserByRequestId(User userByRequestId) {
         this.userByRequestId = userByRequestId;
+    }
+
+    public static final ConnectionRequest valueOf(BigInteger userId, BigInteger requestId) {
+        return new ConnectionRequest(userId, requestId);
     }
 }

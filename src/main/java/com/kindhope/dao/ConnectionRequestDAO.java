@@ -12,9 +12,7 @@ import java.util.List;
  * @version 0.0.1
  */
 public interface ConnectionRequestDAO extends GenericDAO<ConnectionRequest>, GenericPKDAO<ConnectionRequest, ConnectionRequestPK> {
-    // need to be modified
     List<User> findReceivedRequests(BigInteger userId);
-    // need to be modified
     List<User> findSentRequests(BigInteger userId);
 
     void removeRequest(BigInteger userId, BigInteger requestId);

@@ -82,23 +82,13 @@ public class MessageDAOImpl extends AbstractDAOImpl<Message> implements MessageD
     }
 
     @Override
-    public List<Message> findUserConversationsLastMessagesWithUnseenCount(List<BigInteger> conversationIds) {
-        return null;
-    }
-
-    @Override
-    public List<Message> findUserConversationsLastMessagesWithUnseenCount(BigInteger userId) {
-        return null;
-    }
-
-    @Override
     public boolean addSeenAtTimestamp(BigInteger conversationId, BigInteger userId) {
         LOG.debug("ADD TIMESTAMP FOR SEEN AT BY USER ID AND CONVERSATION ID START");
         LOG.trace("USER ID" + userId);
         LOG.trace("CONVERSATION ID" + conversationId);
         List<Message> list = null;
         Query<Message> query = getSession().createQuery("update Message set seenAt = CURRENT_TIMESTAMP() where " +
-                "(seenAt = '' or seenAt is null) and conversationId = :conversationId and userId != :userId");
+                "seenAt is null and conversationId = :conversationId and userId != :userId");
         query.setParameter("conversationId", conversationId);
         query.setParameter("userId", userId);
         int affectedRows = query.executeUpdate();

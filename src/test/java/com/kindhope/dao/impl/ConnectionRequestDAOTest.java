@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -110,6 +112,10 @@ public class ConnectionRequestDAOTest extends AbstractDAOImplTest {
         List<User> users = dao.findReceivedRequests(BigInteger.valueOf(6));
         assertNotNull(users);
         assertEquals(2, users.size());
+        dao.removeRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
+        users = dao.findReceivedRequests(BigInteger.valueOf(6));
+        assertNotNull(users);
+        assertEquals(1, users.size());
     }
 
     @Test
@@ -117,8 +123,36 @@ public class ConnectionRequestDAOTest extends AbstractDAOImplTest {
         List<User> users = dao.findSentRequests(BigInteger.valueOf(3));
         assertNotNull(users);
         assertEquals(1, users.size());
-    }
+        dao.removeRequest(BigInteger.valueOf(3), BigInteger.valueOf(5));
+        users = dao.findSentRequests(BigInteger.valueOf(3));
+        assertNotNull(users);
+        assertEquals(0, users.size());
 
+    }
+    @Test
+    public void removeRequest() {
+        long size = dao.countRequests(BigInteger.valueOf(6));
+        assertEquals(2, size);
+        dao.removeRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
+        size = dao.countRequests(BigInteger.valueOf(6));
+        assertEquals(1, size);
+    }
+    @Test
+    public void restoreRequest() {
+        long size = dao.countRequests(BigInteger.valueOf(6));
+        assertEquals(2, size);
+        dao.removeRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
+        size = dao.countRequests(BigInteger.valueOf(6));
+        assertEquals(1, size);
+        dao.restoreRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
+        size = dao.countRequests(BigInteger.valueOf(6));
+        assertEquals(2, size);
+    }
+    @Test
+    public void countRequests() {
+        long size = dao.countRequests(BigInteger.valueOf(6));
+        assertEquals(2, size);
+    }
     private ConnectionRequest getNewInstance(long id1, long id2) {
         ConnectionRequest test = new ConnectionRequest();
         test.setUserId(BigInteger.valueOf(id1));
