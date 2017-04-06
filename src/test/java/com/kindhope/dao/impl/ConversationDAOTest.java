@@ -93,12 +93,14 @@ public class ConversationDAOTest extends AbstractDAOImplTest {
         assertNotNull(test);
         assertEquals(3, test.size());
     }
+
     @Test
     public void findWithMessages() {
-        Conversation conversation = dao.findWithMessages(BigInteger.valueOf(1));
+        Conversation conversation = dao.findConversationWithMessages(BigInteger.valueOf(1));
         assertNotNull(conversation);
         assertEquals(6, conversation.getMessages().size());
     }
+
     private Conversation getObject() {
         Conversation test = new Conversation();
         test.setUserId(BigInteger.ONE);

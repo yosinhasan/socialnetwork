@@ -35,6 +35,12 @@ public class ConversationTest {
     }
 
     @Test
+    public void testLastMessageId() throws Exception {
+        testObject.setLastMessageId(BigInteger.TEN);
+        assertEquals(BigInteger.TEN, testObject.getLastMessageId());
+    }
+
+    @Test
     public void testUserId() throws Exception {
         testObject.setUserId(BigInteger.TEN);
         assertEquals(BigInteger.TEN, testObject.getUserId());
@@ -53,6 +59,12 @@ public class ConversationTest {
         assertEquals(expected, testObject.getCreatedAt());
     }
 
+    @Test
+    public void testUpdatedAt() throws Exception {
+        Timestamp expected = Timestamp.from(Instant.now());
+        testObject.setUpdatedAt(expected);
+        assertEquals(expected, testObject.getUpdatedAt());
+    }
 
     @Test
     public void testDeletedAt() throws Exception {

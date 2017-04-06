@@ -37,6 +37,7 @@ public class DeletedConversationDAOTest extends AbstractDAOImplTest {
         pk = getNewPKInstance(1, 1);
 
     }
+
     @Override
     protected IDataSet getDataSet() throws Exception {
         IDataSet dataSet = new FlatXmlDataSetBuilder().build(this.getClass().getClassLoader().getResourceAsStream("dataset/DeletedConversation.xml"));

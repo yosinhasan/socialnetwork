@@ -15,6 +15,9 @@ public interface ConversationDAO extends GenericDAO<Conversation> {
 
     List<BigInteger> findUserConversationIds(BigInteger userId);
 
-    Conversation findWithMessages(BigInteger conversationId);
+    Conversation findConversationWithMessages(BigInteger conversationId);
 
+    void setConversationLastMessageId(BigInteger conversationId, BigInteger messageId);
+
+    Long countConversationUnseenMessagesQuantity(BigInteger userId);
 }

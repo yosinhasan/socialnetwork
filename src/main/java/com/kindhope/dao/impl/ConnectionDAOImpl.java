@@ -4,6 +4,8 @@ import com.kindhope.dao.ConnectionDAO;
 import com.kindhope.entity.Connection;
 import com.kindhope.entity.ConnectionPK;
 import com.kindhope.entity.User;
+import com.kindhope.helper.exception.Error;
+import com.kindhope.web.exception.DAOException;
 import org.apache.log4j.Logger;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -83,6 +85,9 @@ public class ConnectionDAOImpl extends AbstractPKDAOImpl<Connection, ConnectionP
         query.setParameter("friendId", friendId);
         int affectedRow = query.executeUpdate();
         LOG.trace("Affected rows: " + affectedRow);
+        if (affectedRow <= 0) {
+            throw new DAOException(Error.CONNECTION_NOT_REMOVED);
+        }
         LOG.debug("REMOVE CONNECTION BY  USER ID AND FRIEND ID END");
     }
 
@@ -96,6 +101,9 @@ public class ConnectionDAOImpl extends AbstractPKDAOImpl<Connection, ConnectionP
         query.setParameter("friendId", friendId);
         int affectedRow = query.executeUpdate();
         LOG.trace("Affected rows: " + affectedRow);
+        if (affectedRow <= 0) {
+            throw new DAOException(Error.CONNECTION_NOT_RESTORED);
+        }
         LOG.debug("RESTORE CONNECTION BY  USER ID AND FRIEND ID END");
     }
 

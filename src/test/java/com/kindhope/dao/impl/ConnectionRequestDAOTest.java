@@ -4,6 +4,7 @@ import com.kindhope.dao.ConnectionRequestDAO;
 import com.kindhope.entity.ConnectionRequest;
 import com.kindhope.entity.ConnectionRequestPK;
 import com.kindhope.entity.User;
+import com.kindhope.web.exception.DAOException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
@@ -12,8 +13,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -129,30 +128,33 @@ public class ConnectionRequestDAOTest extends AbstractDAOImplTest {
         assertEquals(0, users.size());
 
     }
+
     @Test
     public void removeRequest() {
-        long size = dao.countRequests(BigInteger.valueOf(6));
-        assertEquals(2, size);
         dao.removeRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
-        size = dao.countRequests(BigInteger.valueOf(6));
-        assertEquals(1, size);
     }
+
+    @Test(expected = DAOException.class)
+    public void removeRequestShouldFail() {
+        dao.removeRequest(BigInteger.ONE, BigInteger.valueOf(-1));
+    }
+
     @Test
     public void restoreRequest() {
-        long size = dao.countRequests(BigInteger.valueOf(6));
-        assertEquals(2, size);
-        dao.removeRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
-        size = dao.countRequests(BigInteger.valueOf(6));
-        assertEquals(1, size);
         dao.restoreRequest(BigInteger.valueOf(4), BigInteger.valueOf(6));
-        size = dao.countRequests(BigInteger.valueOf(6));
-        assertEquals(2, size);
     }
+
+    @Test(expected = DAOException.class)
+    public void restoreRequestShouldFail() {
+        dao.restoreRequest(BigInteger.ONE, BigInteger.valueOf(-1));
+    }
+
     @Test
     public void countRequests() {
         long size = dao.countRequests(BigInteger.valueOf(6));
         assertEquals(2, size);
     }
+
     private ConnectionRequest getNewInstance(long id1, long id2) {
         ConnectionRequest test = new ConnectionRequest();
         test.setUserId(BigInteger.valueOf(id1));

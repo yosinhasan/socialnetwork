@@ -34,25 +34,25 @@ public class BlacklistDAOImpl extends AbstractPKDAOImpl<Blacklist, BlacklistPK> 
 
     @Transactional
     @Override
-    public List<User> findUsersByUserId(BigInteger userId) {
-        LOG.debug("FIND BLACKLISTS BY  USER ID START");
+    public List<User> findUserBlacklist(BigInteger userId) {
+        LOG.debug("FIND USER BLACKLIST BY  USER ID START");
         LOG.debug("USER ID" + userId);
         Query<User> query = getSession().createQuery("select new com.kindhope.entity.User(u.id, u.name) from User u where u.id in (select b.blockedUserId from Blacklist b where b.userId = :userId)", User.class);
         query.setParameter("userId", userId);
         List<User> blacklists = query.getResultList();
-        LOG.debug("FIND BLACKLISTS BY  USER ID END");
+        LOG.debug("FIND USER BLACKLIST BY  USER ID END");
         return blacklists;
     }
 
     @Transactional
     @Override
-    public List<User> findUsersByBlockedUserId(BigInteger userId) {
-        LOG.debug("FIND BLACKLISTS BY BLOCKED USER ID START");
+    public List<User> findPeopleWhoBlockedUser(BigInteger userId) {
+        LOG.debug("FIND PEOPLE WHO BLOCKED THE GIVEN USER BY USER ID START");
         LOG.debug("USER ID" + userId);
         Query<User> query = getSession().createQuery("select new com.kindhope.entity.User(u.id, u.name) from User u where u.id in (select b.userId from Blacklist b where b.blockedUserId = :userId)", User.class);
         query.setParameter("userId", userId);
         List<User> blacklists = query.getResultList();
-        LOG.debug("FIND BLACKLISTS BY  BLOCKED USER ID END");
+        LOG.debug("FIND PEOPLE WHO BLOCKED THE GIVEN USER BY USER ID END");
         return blacklists;
     }
 }

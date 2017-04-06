@@ -13,8 +13,8 @@ import java.util.List;
  */
 public interface BlacklistDAO extends GenericDAO<Blacklist>, GenericPKDAO<Blacklist, BlacklistPK> {
 
-    List<User> findUsersByUserId(BigInteger userId);
+    List<User> findUserBlacklist(BigInteger userId);
 
-    List<User> findUsersByBlockedUserId(BigInteger userId);
+    List<User> findPeopleWhoBlockedUser(BigInteger userId);
 
 }

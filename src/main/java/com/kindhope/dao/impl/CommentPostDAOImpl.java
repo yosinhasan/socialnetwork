@@ -37,7 +37,7 @@ public class CommentPostDAOImpl extends AbstractPKDAOImpl<CommentPost, CommentPo
     public List<Comment> findComments(BigInteger postId) {
         LOG.debug("FIND COMMENTS BY POST ID START");
         LOG.debug("PHOTO ID" + postId);
-        Query<Comment> query = getSession().createQuery("from Comment c where c.id in (select cp.commentId from CommentPost cp where cp.postId = :postId)", Comment.class);
+        Query<Comment> query = getSession().createQuery("from Comment c where c.deletedAt is null and c.id in (select cp.commentId from CommentPost cp where cp.postId = :postId and cp.deletedAt is null)", Comment.class);
         query.setParameter("postId", postId);
         List<Comment> list = query.getResultList();
         LOG.trace("FOUND RESULT: " + list);

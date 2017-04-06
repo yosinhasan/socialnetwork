@@ -108,15 +108,15 @@ public class BlacklistDAOTest extends AbstractDAOImplTest {
     }
 
     @Test
-    public void findUsersByUserId() {
-        List<User> blacklists = dao.findUsersByUserId(BigInteger.ONE);
+    public void findUserBlacklist() {
+        List<User> blacklists = dao.findUserBlacklist(BigInteger.ONE);
         assertNotNull(blacklists);
         assertEquals(2, blacklists.size());
     }
 
     @Test
-    public void findUsersByBlockedUserId() {
-        List<User> users = dao.findUsersByBlockedUserId(BigInteger.valueOf(3));
+    public void findPeopleWhoBlockedUser() {
+        List<User> users = dao.findPeopleWhoBlockedUser(BigInteger.valueOf(3));
         assertNotNull(users);
         assertEquals(1, users.size());
     }

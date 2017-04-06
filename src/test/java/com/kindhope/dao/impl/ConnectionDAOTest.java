@@ -4,6 +4,7 @@ import com.kindhope.dao.ConnectionDAO;
 import com.kindhope.entity.Connection;
 import com.kindhope.entity.ConnectionPK;
 import com.kindhope.entity.User;
+import com.kindhope.web.exception.DAOException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.NonUniqueObjectException;
@@ -160,22 +161,25 @@ public class ConnectionDAOTest extends AbstractDAOImplTest {
         actual = dao.countConnections(BigInteger.valueOf(6));
         assertEquals(Long.valueOf(0), actual);
     }
+
     @Test
     public void removeConnection() {
-        Connection test = dao.read(Connection.class, ConnectionPK.valueOf(BigInteger.valueOf(6), BigInteger.valueOf(5)));
-        assertNotNull(test);
-        assertNotNull(test.getDeletedAt());
-        test = dao.read(Connection.class, ConnectionPK.valueOf(BigInteger.valueOf(6), BigInteger.valueOf(4)));
-        assertNotNull(test);
-        assertNotNull(test.getDeletedAt());
+        dao.removeConnection(BigInteger.valueOf(6), BigInteger.valueOf(4));
     }
+
+    @Test(expected = DAOException.class)
+    public void removeConnectionShouldFail() {
+        dao.removeConnection(BigInteger.ONE, BigInteger.valueOf(-1));
+    }
+
     @Test
     public void restoreConnection() {
         dao.restoreConnection(BigInteger.valueOf(6), BigInteger.valueOf(5));
-        Connection test = dao.read(Connection.class, ConnectionPK.valueOf(BigInteger.valueOf(6), BigInteger.valueOf(5)));
-        assertNotNull(test);
-        assertNull(test.getDeletedAt());
-        assertNotNull(test.getUpdatedAt());
+    }
+
+    @Test(expected = DAOException.class)
+    public void restoreConnectionShouldFail() {
+        dao.restoreConnection(BigInteger.ONE, BigInteger.valueOf(-1));
     }
 
     private Connection getNewInstance(long id1, long id2) {

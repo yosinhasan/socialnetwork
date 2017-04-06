@@ -4,6 +4,8 @@ import com.kindhope.dao.ConnectionRequestDAO;
 import com.kindhope.entity.ConnectionRequest;
 import com.kindhope.entity.ConnectionRequestPK;
 import com.kindhope.entity.User;
+import com.kindhope.helper.exception.Error;
+import com.kindhope.web.exception.DAOException;
 import org.apache.log4j.Logger;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -37,7 +39,7 @@ public class ConnectionRequestDAOImpl extends AbstractPKDAOImpl<ConnectionReques
     public List<User> findReceivedRequests(BigInteger userId) {
         LOG.debug("FIND CONNECTION RECEIVED REQUESTS BY  USER ID START");
         LOG.debug("USER ID" + userId);
-        Query<User> query = getSession().createQuery("select new com.kindhope.entity.User(u.id, u.name) from User u where u.id in (select c.userId from ConnectionRequest c where c.requestId = :userId and deletedAt is null)", User.class);
+        Query<User> query = getSession().createQuery("select new com.kindhope.entity.User(u.id, u.name) from User u where u.id in (select c.userId from ConnectionRequest c where c.requestId = :userId and c.deletedAt is null)", User.class);
         query.setParameter("userId", userId);
         List<User> list = query.getResultList();
         LOG.debug("FIND CONNECTION RECEIVED REQUESTS BY  USER ID END");
@@ -49,7 +51,7 @@ public class ConnectionRequestDAOImpl extends AbstractPKDAOImpl<ConnectionReques
     public List<User> findSentRequests(BigInteger userId) {
         LOG.debug("FIND CONNECTION SENT REQUESTS BY  USER ID START");
         LOG.debug("USER ID" + userId);
-        Query<User> query = getSession().createQuery("select new com.kindhope.entity.User(u.id, u.name) from User u where u.id in (select c.requestId from ConnectionRequest c where c.userId = :userId and deletedAt is null)", User.class);
+        Query<User> query = getSession().createQuery("select new com.kindhope.entity.User(u.id, u.name) from User u where u.id in (select c.requestId from ConnectionRequest c where c.userId = :userId and c.deletedAt is null)", User.class);
         query.setParameter("userId", userId);
         List<User> list = query.getResultList();
         LOG.debug("FIND CONNECTION SENT REQUESTS BY  USER ID END");
@@ -66,6 +68,9 @@ public class ConnectionRequestDAOImpl extends AbstractPKDAOImpl<ConnectionReques
         query.setParameter("requestId", requestId);
         int affectedRow = query.executeUpdate();
         LOG.trace("Affected rows: " + affectedRow);
+        if (affectedRow <= 0) {
+            throw new DAOException(Error.CONNECTION_REQUEST_NOT_REMOVED);
+        }
         LOG.debug("REMOVE CONNECTION REQUEST BY  USER ID AND REQUEST ID END");
     }
 
@@ -79,6 +84,9 @@ public class ConnectionRequestDAOImpl extends AbstractPKDAOImpl<ConnectionReques
         query.setParameter("requestId", requestId);
         int affectedRow = query.executeUpdate();
         LOG.trace("Affected rows: " + affectedRow);
+        if (affectedRow <= 0) {
+            throw new DAOException(Error.CONNECTION_NOT_RESTORED);
+        }
         LOG.debug("RESTORE CONNECTION REQUEST BY  USER ID AND REQUEST ID END");
     }
 
@@ -86,7 +94,7 @@ public class ConnectionRequestDAOImpl extends AbstractPKDAOImpl<ConnectionReques
     public Long countRequests(BigInteger userId) {
         LOG.debug("COUNT CONNECTION RECEIVED REQUESTS BY  USER ID START");
         LOG.debug("USER ID" + userId);
-        Query<Long> query = getSession().createQuery("select count(c.userId) from ConnectionRequest c where c.requestId = :userId and deletedAt is null", Long.class);
+        Query<Long> query = getSession().createQuery("select count(c.userId) from ConnectionRequest c where c.requestId = :userId and c.deletedAt is null", Long.class);
         query.setParameter("userId", userId);
         long count = query.uniqueResult();
         LOG.trace("COUNT DATA: " + count);

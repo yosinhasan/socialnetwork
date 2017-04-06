@@ -13,10 +13,13 @@ import java.util.List;
  */
 public interface ConnectionRequestDAO extends GenericDAO<ConnectionRequest>, GenericPKDAO<ConnectionRequest, ConnectionRequestPK> {
     List<User> findReceivedRequests(BigInteger userId);
+
     List<User> findSentRequests(BigInteger userId);
 
     void removeRequest(BigInteger userId, BigInteger requestId);
+
     void restoreRequest(BigInteger userId, BigInteger requestId);
+
     Long countRequests(BigInteger userId);
 
 }
