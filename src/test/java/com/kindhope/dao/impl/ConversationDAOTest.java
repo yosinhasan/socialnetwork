@@ -41,7 +41,8 @@ public class ConversationDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void readAll() throws Exception {
-        assertNotNull(dao.readAll());
+        List<Conversation> conversations = dao.readAll();
+        assertNotNull(conversations);
     }
 
     @Test
@@ -51,7 +52,7 @@ public class ConversationDAOTest extends AbstractDAOImplTest {
 
     @Test
     public void read() throws Exception {
-        assertNotNull(dao.read(Conversation.class, BigInteger.ONE));
+        assertNotNull(dao.read(Conversation.class, BigInteger.valueOf(4)));
     }
 
     @Test
@@ -63,6 +64,7 @@ public class ConversationDAOTest extends AbstractDAOImplTest {
     public void update() throws Exception {
         Timestamp expected = Timestamp.from(Instant.now());
         Conversation test = dao.read(Conversation.class, BigInteger.valueOf(2));
+        System.out.println(test);
         assertNotNull(test);
         test.setCreatedAt(expected);
         dao.update(test);

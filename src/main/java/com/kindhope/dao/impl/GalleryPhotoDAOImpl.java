@@ -35,12 +35,8 @@ public class GalleryPhotoDAOImpl extends AbstractPKDAOImpl<GalleryPhoto, Gallery
     @Transactional
     @Override
     public List<Photo> findGalleryPhotos(BigInteger galleryId) {
-        LOG.debug("FIND GALLERY PHOTOS BY ID START");
-        LOG.debug("GALLERY ID" + galleryId);
         Query<Photo> query = getSession().createQuery("select new com.kindhope.entity.Photo(p.id, p.userId, p.name) from Photo p where p.id in (select gp.photoId from GalleryPhoto gp where gp.galleryId = :galleryId)", Photo.class);
         query.setParameter("galleryId", galleryId);
-        List<Photo> list = query.getResultList();
-        LOG.debug("FIND GALLERY PHOTOS BY ID END");
-        return list;
+        return query.getResultList();
     }
 }
