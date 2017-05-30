@@ -149,7 +149,7 @@ public class Conversation {
     }
 
     @ManyToOne
-    @JoinColumn(name = "last_message_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "last_message_id", referencedColumnName = "id", nullable = true, insertable = false, updatable = false)
     public Message getLastMessage() {
         return lastMessage;
     }
