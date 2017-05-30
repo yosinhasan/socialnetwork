@@ -43,4 +43,13 @@ public class GalleryServiceImpl implements GalleryService {
         return galleryDAO.readAll();
     }
 
+    @Override
+    public List<Gallery> findAllByUserId(BigInteger userId) {
+        return galleryDAO.findAllByUserId(userId);
+    }
+
+    @Override
+    public Gallery findByGalleryIdAndUserId(BigInteger userId, BigInteger galleryId) {
+        return galleryDAO.findByGalleryIdAndUserId(userId, galleryId);
+    }
 }

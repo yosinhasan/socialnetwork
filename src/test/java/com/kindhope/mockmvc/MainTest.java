@@ -20,7 +20,7 @@ public class MainTest extends AbstractTest {
                 .andExpect(redirectedUrl("http://localhost/auth/login.fy"));
     }
 
-    @WithMockUser
+    @WithMockUser(username = "email@email.ru", password = "123456")
     @Test
     public void index() throws Exception {
         MockHttpServletRequestBuilder createMessage = get("/index.fy");

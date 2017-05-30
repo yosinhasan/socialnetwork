@@ -6,6 +6,8 @@ import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,16 +39,29 @@ public class BlacklistController {
 //        Collection<Blacklist> list = blacklistService.readAll();
         return view;
     }
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String addNew() {
+        return "blacklist/new";
+    }
+
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String store(@ModelAttribute("form") Blacklist form) {
-        return "";
+    public String store(@ModelAttribute("form") Blacklist form, BindingResult bindingResult) {
+        LOG.trace("FORM: " + form);
+        //validator
+        if (bindingResult.hasErrors()) {
+            LOG.error("FORM VALIDATION FAILED");
+            LOG.error("REDIRECT TO BLACKLIST EDIT PAGE");
+            return "blacklist/new";
+        }
+        blacklistService.create(form);
+        return "redirect:/blacklist";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable BigInteger id) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("");
+        view.setViewName("blacklist/show");
         view.addObject("item", blacklistService.read(id));
         return view;
     }
@@ -54,17 +69,27 @@ public class BlacklistController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable BigInteger id) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("");
+        view.addObject("item", blacklistService.read(id));
+        view.setViewName("blacklist/edit");
         return view;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("form") Blacklist form) {
-        return "";
+    public String update(@ModelAttribute("form") Blacklist form, BindingResult bindingResult) {
+        LOG.trace("FORM: " + form);
+        //validator
+        if (bindingResult.hasErrors()) {
+            LOG.error("FORM VALIDATION FAILED");
+            LOG.error("REDIRECT TO BLACKLIST EDIT PAGE");
+            return "blacklist/edit";
+        }
+        blacklistService.create(form);
+        return "redirect:/blacklist";
     }
 
     @RequestMapping(value = "/delete/{id}")
     public String destroy(@PathVariable BigInteger id) {
+
         return "";
     }
 }

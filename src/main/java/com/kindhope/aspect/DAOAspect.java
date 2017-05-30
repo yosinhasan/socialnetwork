@@ -20,7 +20,7 @@ public class DAOAspect {
         LOG.trace("CLASS: " + pjp.getThis());
         LOG.trace("METHOD NAME: " + pjp.getSignature().getName());
         Object object = pjp.proceed();
-        LOG.trace("RETRIEVED DATA: " + object);
+        LOG.trace("OUTPUT DATA: " + object);
         LOG.debug("DAO OPERATION END");
         return object;
     }

@@ -1,6 +1,7 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.CommentPhotoDAO;
+import com.kindhope.entity.Comment;
 import com.kindhope.entity.CommentPhoto;
 import com.kindhope.entity.CommentPhotoPK;
 import com.kindhope.service.CommentPhotoService;
@@ -52,5 +53,10 @@ public class CommentPhotoServiceImpl implements CommentPhotoService {
     @Override
     public CommentPhotoPK save(CommentPhoto object) {
         return commentPhotoDAO.save(object);
+    }
+
+    @Override
+    public List<Comment> findComments(BigInteger photoId) {
+        return commentPhotoDAO.findComments(photoId);
     }
 }

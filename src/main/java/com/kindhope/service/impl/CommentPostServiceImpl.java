@@ -1,6 +1,7 @@
 package com.kindhope.service.impl;
 
 import com.kindhope.dao.CommentPostDAO;
+import com.kindhope.entity.Comment;
 import com.kindhope.entity.CommentPost;
 import com.kindhope.entity.CommentPostPK;
 import com.kindhope.service.CommentPostService;
@@ -47,6 +48,11 @@ public class CommentPostServiceImpl implements CommentPostService {
     @Override
     public CommentPost read(Class<CommentPost> commentPostClass, CommentPostPK commentPostPK) {
         return commentPostDAO.read(commentPostClass, commentPostPK);
+    }
+
+    @Override
+    public List<Comment> findComments(BigInteger postId) {
+        return commentPostDAO.findComments(postId);
     }
 
     @Override

@@ -11,17 +11,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
-public class ServiceAspect {
+public class WebAspect {
     private static final Logger LOG = Logger.getLogger(DAOAspect.class);
 
-    @Around("com.kindhope.aspect.SystemArchitecture.businessService()")
+    @Around("com.kindhope.aspect.SystemArchitecture.inWebLayer()")
     public Object doOperation(ProceedingJoinPoint pjp) throws Throwable {
-        LOG.debug("SERVICE OPERATION START");
+        LOG.debug("WEB OPERATION START");
         LOG.trace("CLASS: " + pjp.getThis());
         LOG.trace("METHOD NAME: " + pjp.getSignature().getName());
         Object object = pjp.proceed();
         LOG.trace("OUTPUT DATA: " + object);
-        LOG.debug("SERVICE OPERATION END");
+        LOG.debug("WEB OPERATION END");
         return object;
     }
 }

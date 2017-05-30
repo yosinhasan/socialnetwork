@@ -51,9 +51,57 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findUserWithUserRoles(BigInteger userId) {
+        return userDAO.findUserWithUserRoles(userId);
+    }
+
+    @Override
+    public User findUserWithPhotos(BigInteger userId) {
+        return userDAO.findUserWithPhotos(userId);
+    }
+
+    @Override
+    public User findUserWithGallery(BigInteger userId) {
+        return userDAO.findUserWithGallery(userId);
+    }
+
+    @Override
+    public User findUserWithConnectionsRequests(BigInteger userId) {
+        return userDAO.findUserWithConnectionsRequests(userId);
+    }
+
+    @Override
+    public User findUserWithConnectionsByFriendId(BigInteger friendId) {
+        return userDAO.findUserWithConnectionsByFriendId(friendId);
+    }
+
+    @Override
+    public User findUserWithConnections(BigInteger userId) {
+        return userDAO.findUserWithConnections(userId);
+    }
+
+    @Override
+    public User findUserWithComments(BigInteger userId) {
+        return userDAO.findUserWithComments(userId);
+    }
+
+    @Override
+    public User findUserWithBlacklistUsersByBlockedUserId(BigInteger userId) {
+        return userDAO.findUserWithBlacklistUsersByBlockedUserId(userId);
+    }
+
+    @Override
+    public User findUserWithGroupMember(BigInteger userId) {
+        return userDAO.findUserWithGroupMember(userId);
+    }
+
+    @Override
+    public User findUserWithBlacklistUsersByUserId(BigInteger userId) {
+        return userDAO.findUserWithBlacklistUsersByUserId(userId);
+    }
+
+    @Override
     public User findByEmail(String email) {
         return userDAO.findByEmail(email);
     }
-
-
 }

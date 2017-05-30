@@ -34,7 +34,6 @@ public class AuthController {
 
     @RequestMapping(value = "/login.fy", method = RequestMethod.GET)
     public ModelAndView login(String error, String logout) {
-        LOG.debug("AUTH LOGIN START");
         ModelAndView view = new ModelAndView("auth/login");
         if (error != null) {
             LOG.error("ERROR OCCURED");
@@ -44,22 +43,18 @@ public class AuthController {
             LOG.trace("USER LOGGED OUT");
             view.addObject("message", "You have been logged out successfully.");
         }
-        LOG.debug("AUTH LOGIN END");
         return view;
     }
 
     @RequestMapping(value = "/signup.fy", method = RequestMethod.GET)
     public ModelAndView signup() {
-        LOG.debug("SIGN UP START");
         ModelAndView view = new ModelAndView("auth/signup");
         view.addObject("userForm", new User());
-        LOG.debug("SIGN UP END");
         return view;
     }
 
     @RequestMapping(value = "/signup.fy", method = RequestMethod.POST)
     public String registerNewUser(@ModelAttribute("userForm") User user, BindingResult bindingResult, Model model) throws IOException {
-        LOG.debug("REGISTER NEW USER START");
         LOG.trace("User to register => " + user);
         userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -70,7 +65,6 @@ public class AuthController {
         String password = user.getPassword();
         userService.create(user);
         securityService.autologin(user.getEmail(), password);
-        LOG.debug("REGISTER NEW USER END");
         return "redirect:/index.fy";
     }
 

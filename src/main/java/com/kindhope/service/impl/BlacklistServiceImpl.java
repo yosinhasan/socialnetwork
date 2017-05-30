@@ -3,6 +3,7 @@ package com.kindhope.service.impl;
 import com.kindhope.dao.BlacklistDAO;
 import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.BlacklistPK;
+import com.kindhope.entity.User;
 import com.kindhope.service.BlacklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,5 +52,15 @@ public class BlacklistServiceImpl implements BlacklistService {
     @Override
     public BlacklistPK save(Blacklist object) {
         return blacklistDAO.save(object);
+    }
+
+    @Override
+    public List<User> findPeopleWhoBlockedUser(BigInteger userId) {
+        return blacklistDAO.findPeopleWhoBlockedUser(userId);
+    }
+
+    @Override
+    public List<User> findUserBlacklist(BigInteger userId) {
+        return blacklistDAO.findUserBlacklist(userId);
     }
 }

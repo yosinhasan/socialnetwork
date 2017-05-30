@@ -42,4 +42,29 @@ public class ConversationServiceImpl implements ConversationService {
     public List<Conversation> readAll() {
         return ConversationDAO.readAll();
     }
+
+    @Override
+    public Long countConversationUnseenMessagesQuantity(BigInteger userId) {
+        return ConversationDAO.countConversationUnseenMessagesQuantity(userId);
+    }
+
+    @Override
+    public void setConversationLastMessageId(BigInteger conversationId, BigInteger messageId) {
+        ConversationDAO.setConversationLastMessageId(conversationId, messageId);
+    }
+
+    @Override
+    public Conversation findConversationWithMessages(BigInteger conversationId) {
+        return ConversationDAO.findConversationWithMessages(conversationId);
+    }
+
+    @Override
+    public List<BigInteger> findUserConversationIds(BigInteger userId) {
+        return ConversationDAO.findUserConversationIds(userId);
+    }
+
+    @Override
+    public List<Conversation> findUserConversations(BigInteger userId) {
+        return ConversationDAO.findUserConversations(userId);
+    }
 }

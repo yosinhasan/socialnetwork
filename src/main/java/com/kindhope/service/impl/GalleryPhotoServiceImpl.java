@@ -3,6 +3,7 @@ package com.kindhope.service.impl;
 import com.kindhope.dao.GalleryPhotoDAO;
 import com.kindhope.entity.GalleryPhoto;
 import com.kindhope.entity.GalleryPhotoPK;
+import com.kindhope.entity.Photo;
 import com.kindhope.service.GalleryPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,10 @@ public class GalleryPhotoServiceImpl implements GalleryPhotoService {
     @Override
     public GalleryPhotoPK save(GalleryPhoto object) {
         return galleryPhotoDAO.save(object);
+    }
+
+    @Override
+    public List<Photo> findGalleryPhotos(BigInteger galleryId) {
+        return galleryPhotoDAO.findGalleryPhotos(galleryId);
     }
 }

@@ -42,4 +42,19 @@ public class MessageServiceImpl implements MessageService {
     public List<Message> readAll() {
         return messageDAO.readAll();
     }
+
+    @Override
+    public boolean addSeenAtTimestamp(BigInteger conversationId, BigInteger userId) {
+        return messageDAO.addSeenAtTimestamp(conversationId, userId);
+    }
+
+    @Override
+    public Message findLastMessage(BigInteger conversationId) {
+        return messageDAO.findLastMessage(conversationId);
+    }
+
+    @Override
+    public List<Message> findConversationMessages(BigInteger conversationId) {
+        return messageDAO.findConversationMessages(conversationId);
+    }
 }
