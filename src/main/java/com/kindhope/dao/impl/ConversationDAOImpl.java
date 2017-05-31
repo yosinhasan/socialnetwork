@@ -4,7 +4,6 @@ import com.kindhope.dao.ConversationDAO;
 import com.kindhope.entity.Conversation;
 import com.kindhope.helper.exception.Error;
 import com.kindhope.web.exception.DAOException;
-import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;

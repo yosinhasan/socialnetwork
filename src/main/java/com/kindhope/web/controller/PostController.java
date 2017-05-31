@@ -5,6 +5,7 @@ import com.kindhope.service.PostService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,39 +28,44 @@ public class PostController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
-        view.setViewName("");
-
+        view.setViewName("post/index");
         return view;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String store(@ModelAttribute("form") Post form) {
-        return "";
+    public String store(@ModelAttribute("form") Post form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/post";
+        }
+        return "redirect:/post";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable BigInteger id) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("");
-
+        view.setViewName("post/show");
+        postService.read(id);
         return view;
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable BigInteger id) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("");
-
+        view.setViewName("post/edit");
+        view.addObject("item", postService.read(id));
         return view;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("form") Post form) {
-        return "";
+    public String update(@ModelAttribute("form") Post form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/post";
+        }
+        return "redirect:/post";
     }
 
     @RequestMapping(value = "/delete/{id}")
     public String destroy(@PathVariable BigInteger id) {
-        return "";
+        return "redirect:/post";
     }
 }

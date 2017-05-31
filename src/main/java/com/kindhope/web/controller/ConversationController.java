@@ -1,7 +1,7 @@
 package com.kindhope.web.controller;
 
-import com.kindhope.entity.Group;
-import com.kindhope.service.GroupService;
+import com.kindhope.entity.Conversation;
+import com.kindhope.service.ConversationService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,23 +17,23 @@ import java.math.BigInteger;
 /**
  * @author Yosin_Hasan<yosinhasan@gmail.com>.
  */
-@RequestMapping("/group")
+@RequestMapping("/conversation")
 @Controller
-public class GroupController {
-    private static final Logger LOG = Logger.getLogger(GroupController.class);
+public class ConversationController {
+    private static final Logger LOG = Logger.getLogger(ConversationController.class);
 
     @Autowired
-    private GroupService groupService;
+    private ConversationService conversationService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
-        view.setViewName("group/index");
+        view.setViewName("conversation/index");
         return view;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String store(@ModelAttribute("form") Group form, BindingResult bindingResult) {
+    public String store(@ModelAttribute("form") Conversation form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "";
         }
@@ -43,21 +43,21 @@ public class GroupController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable BigInteger id) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("group/show");
-        view.addObject("item", groupService.read(id));
+        view.setViewName("conversation/show");
+        view.addObject("item", conversationService.read(id));
         return view;
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable BigInteger id) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("group/edit");
-        view.addObject("item", groupService.read(id));
+        view.setViewName("conversation/edit");
+        view.addObject("item", conversationService.read(id));
         return view;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("form") Group form, BindingResult bindingResult) {
+    public String update(@ModelAttribute("form") Conversation form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "";
         }

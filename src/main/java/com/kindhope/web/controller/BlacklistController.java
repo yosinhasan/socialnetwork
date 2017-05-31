@@ -6,7 +6,6 @@ import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +38,7 @@ public class BlacklistController {
 //        Collection<Blacklist> list = blacklistService.readAll();
         return view;
     }
+
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String addNew() {
         return "blacklist/new";
@@ -83,13 +83,12 @@ public class BlacklistController {
             LOG.error("REDIRECT TO BLACKLIST EDIT PAGE");
             return "blacklist/edit";
         }
-        blacklistService.create(form);
+        blacklistService.update(form);
         return "redirect:/blacklist";
     }
 
     @RequestMapping(value = "/delete/{id}")
     public String destroy(@PathVariable BigInteger id) {
-
-        return "";
+        return "redirect:/blacklist";
     }
 }
