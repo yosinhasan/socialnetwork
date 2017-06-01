@@ -2,6 +2,7 @@ package com.kindhope.web.controller;
 
 import com.kindhope.entity.Message;
 import com.kindhope.service.MessageService;
+import com.kindhope.web.validator.MessageValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private MessageValidator messageValidator;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
@@ -34,6 +38,7 @@ public class MessageController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String store(@ModelAttribute("form") Message form, BindingResult bindingResult) {
+        messageValidator.validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
             return "";
         }
@@ -58,6 +63,7 @@ public class MessageController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("form") Message form, BindingResult bindingResult) {
+        messageValidator.validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
             return "";
         }

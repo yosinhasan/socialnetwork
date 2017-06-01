@@ -1,4 +1,4 @@
-package com.kindhope.validator;
+package com.kindhope.web.validator;
 
 import com.kindhope.entity.User;
 import com.kindhope.helper.form.FieldErrors;
@@ -36,7 +36,6 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        LOG.debug("VALIDATE USER START");
         User user = (User) o;
         LOG.trace("USER TO VALIDATE => " + user);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, Fields.USER_EMAIL_FIELD, FieldErrors.FIELD_IS_REQUIRED_ERROR);
@@ -61,6 +60,5 @@ public class UserValidator implements Validator {
             LOG.error("USER PASSWORD  DOESN'T MATCH WITH REPEAT PASSWORD =============>>>");
             errors.rejectValue(Fields.USER_PASSWORD_CONFIRM_FIELD, FieldErrors.USER_PASSWORD_NOT_MATCH_ERROR);
         }
-        LOG.debug("VALIDATE USER END");
     }
 }

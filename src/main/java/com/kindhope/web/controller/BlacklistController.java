@@ -1,6 +1,7 @@
 package com.kindhope.web.controller;
 
 import com.kindhope.entity.Blacklist;
+import com.kindhope.entity.User;
 import com.kindhope.service.BlacklistService;
 import com.kindhope.service.UserService;
 import org.apache.log4j.Logger;
@@ -34,8 +35,7 @@ public class BlacklistController {
         ModelAndView view = new ModelAndView();
         view.setViewName("blacklist/index");
         BigInteger userId = BigInteger.ONE;
-//        Iterable<User> s = userService.findBlacklistUsersByUserId(userId);
-//        Collection<Blacklist> list = blacklistService.readAll();
+        Iterable<User> s = blacklistService.findUserBlacklist(userId);
         return view;
     }
 

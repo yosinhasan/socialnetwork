@@ -32,7 +32,7 @@ public class UserController {
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
         view.setViewName("user/index");
-
+        view.addObject("items", userService.readAll());
         return view;
     }
 

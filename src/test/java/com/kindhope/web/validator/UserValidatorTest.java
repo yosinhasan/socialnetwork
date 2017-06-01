@@ -1,4 +1,4 @@
-package com.kindhope.validator;
+package com.kindhope.web.validator;
 
 import com.kindhope.entity.Blacklist;
 import com.kindhope.entity.User;

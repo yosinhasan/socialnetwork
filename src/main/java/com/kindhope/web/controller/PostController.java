@@ -2,6 +2,7 @@ package com.kindhope.web.controller;
 
 import com.kindhope.entity.Post;
 import com.kindhope.service.PostService;
+import com.kindhope.web.validator.PostValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private PostValidator postValidator;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
@@ -34,9 +38,11 @@ public class PostController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String store(@ModelAttribute("form") Post form, BindingResult bindingResult) {
+        postValidator.validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
             return "redirect:/post";
         }
+        postService.create(form);
         return "redirect:/post";
     }
 
@@ -58,6 +64,7 @@ public class PostController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("form") Post form, BindingResult bindingResult) {
+        postValidator.validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
             return "redirect:/post";
         }

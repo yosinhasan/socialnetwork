@@ -3,7 +3,7 @@ package com.kindhope.web.controller;
 import com.kindhope.entity.User;
 import com.kindhope.service.SecurityService;
 import com.kindhope.service.UserService;
-import com.kindhope.validator.UserValidator;
+import com.kindhope.web.validator.UserValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
